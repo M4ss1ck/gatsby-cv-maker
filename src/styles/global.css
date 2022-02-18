@@ -1,4 +1,9 @@
 @tailwind base;
+@layer base {
+  body.dark {
+    background: black;
+  }
+}
 @tailwind components;
 @tailwind utilities;
 
@@ -15,7 +20,7 @@
         background-color: #131314;
       }
       .scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #3B3B46; 
+        background: #1e40af; 
         box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
       }
   
@@ -33,14 +38,14 @@
         width: .5rem;
       }
       .scrollbardark::-webkit-scrollbar-thumb {
-        background: #27272E; 
+        background: #3B3B46; 
         border-radius: 1rem;
       }
       .scrollbardark::-webkit-scrollbar-thumb:active {
         background-color: #131314;
       }
       .scrollbardark::-webkit-scrollbar-thumb:hover {
-        background: #3B3B46; 
+        background: #1e40af; 
         box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
       }
   
