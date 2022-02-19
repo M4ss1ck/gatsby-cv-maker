@@ -32,11 +32,11 @@ const Home = () => {
   })
 
   // React.useEffect(() => {
-  //   setCVdata(JSON.parse(window.localStorage.getItem("cvdata")))
+  //   setCVdata(JSON.parse(localStorage.getItem("cvdata")))
   // }, [])
 
   // React.useEffect(() => {
-  //   window.localStorage.setItem("cvdata", cvdata)
+  //   localStorage.setItem("cvdata", cvdata)
   // }, [cvdata])
 
   const [currentLang, setCurrentLang] = React.useState("")
@@ -231,7 +231,7 @@ const Home = () => {
           <Trans>CV Maker</Trans>
         </h1>
         <p className="font-montserrat">
-          Crearemos un CV a partir de un formulario
+          <Trans>Crearemos un CV a partir de un formulario</Trans>
         </p>
         <small className="mb-8">
           <Trans>
@@ -264,7 +264,7 @@ const Home = () => {
               <textarea
                 id="excerpt"
                 type="text"
-                placeholder="Summary"
+                placeholder={t("Summary")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, excerpt: e.target.value })
@@ -278,7 +278,7 @@ const Home = () => {
               <input
                 id="address"
                 type="text"
-                placeholder="Address"
+                placeholder={t("Address")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, address: e.target.value })
@@ -287,14 +287,14 @@ const Home = () => {
               <input
                 id="email"
                 type="email"
-                placeholder="E-mail"
+                placeholder={t("E-mail")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCVdata({ ...cvdata, email: e.target.value })}
               />
               <input
                 id="website"
                 type="url"
-                placeholder="Website"
+                placeholder={t("Website")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, website: e.target.value })
@@ -303,7 +303,7 @@ const Home = () => {
               <input
                 id="twitter"
                 type="url"
-                placeholder="Twitter"
+                placeholder={t("Twitter")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, twitter: e.target.value })
@@ -312,7 +312,7 @@ const Home = () => {
               <input
                 id="github"
                 type="url"
-                placeholder="Github"
+                placeholder={t("Github")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCVdata({ ...cvdata, github: e.target.value })}
               />
@@ -324,7 +324,7 @@ const Home = () => {
               <input
                 id="skills"
                 type="text"
-                placeholder="Skills"
+                placeholder={t("Skills")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCurrentSkill(e.target.value)}
                 value={currentSkill}
@@ -353,7 +353,7 @@ const Home = () => {
               <input
                 id="languages"
                 type="text"
-                placeholder="Languajes"
+                placeholder={t("Languajes")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCurrentLang(e.target.value)}
                 value={currentLang}
@@ -382,7 +382,7 @@ const Home = () => {
               <input
                 id="education_date"
                 type="text"
-                placeholder="Date"
+                placeholder={t("Date")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentEducation({
@@ -395,7 +395,7 @@ const Home = () => {
               <textarea
                 id="education_title"
                 type="text"
-                placeholder="Title"
+                placeholder={t("Title")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentEducation({
@@ -408,7 +408,7 @@ const Home = () => {
               <textarea
                 id="education_small"
                 type="text"
-                placeholder="Place"
+                placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentEducation({
@@ -442,7 +442,7 @@ const Home = () => {
               <input
                 id="work_date"
                 type="text"
-                placeholder="Date"
+                placeholder={t("Date")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentWork({
@@ -455,7 +455,7 @@ const Home = () => {
               <textarea
                 id="work_title"
                 type="text"
-                placeholder="Position"
+                placeholder={t("Position")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentWork({
@@ -468,7 +468,7 @@ const Home = () => {
               <textarea
                 id="work_small"
                 type="text"
-                placeholder="Place"
+                placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentWork({
@@ -481,7 +481,7 @@ const Home = () => {
               <textarea
                 id="work_info"
                 type="text"
-                placeholder="More info"
+                placeholder={t("More info")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 rows={5}
                 onChange={e =>
@@ -516,7 +516,7 @@ const Home = () => {
               <input
                 id="projects_date"
                 type="text"
-                placeholder="Date"
+                placeholder={t("Date")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentProject({
@@ -529,7 +529,7 @@ const Home = () => {
               <input
                 id="projects_title"
                 type="text"
-                placeholder="Position"
+                placeholder={t("Position")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentProject({
@@ -542,7 +542,7 @@ const Home = () => {
               <input
                 id="projects_url"
                 type="text"
-                placeholder="Place"
+                placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentProject({
@@ -555,7 +555,7 @@ const Home = () => {
               <textarea
                 id="projects_info"
                 type="text"
-                placeholder="More info"
+                placeholder={t("More info")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 rows={5}
                 onChange={e =>
@@ -590,7 +590,7 @@ const Home = () => {
               <input
                 id="award_date"
                 type="text"
-                placeholder="Date"
+                placeholder={t("Date")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentAward({
@@ -603,7 +603,7 @@ const Home = () => {
               <textarea
                 id="award_title"
                 type="text"
-                placeholder="Title"
+                placeholder={t("Title")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentAward({
@@ -616,7 +616,7 @@ const Home = () => {
               <textarea
                 id="award_small"
                 type="text"
-                placeholder="Place"
+                placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentAward({
@@ -650,7 +650,7 @@ const Home = () => {
               <input
                 id="publication_date"
                 type="text"
-                placeholder="Date"
+                placeholder={t("Date")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentPublication({
@@ -663,7 +663,7 @@ const Home = () => {
               <textarea
                 id="publication_title"
                 type="text"
-                placeholder="Title"
+                placeholder={t("Title")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentPublication({
@@ -676,7 +676,7 @@ const Home = () => {
               <textarea
                 id="publication_small"
                 type="text"
-                placeholder="Place"
+                placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentPublication({
@@ -710,7 +710,7 @@ const Home = () => {
               <input
                 id="interest_date"
                 type="text"
-                placeholder="Date"
+                placeholder={t("Date")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentInterest({
@@ -723,7 +723,7 @@ const Home = () => {
               <textarea
                 id="interest_title"
                 type="text"
-                placeholder="Title"
+                placeholder={t("Title")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentInterest({
@@ -736,7 +736,7 @@ const Home = () => {
               <textarea
                 id="interest_small"
                 type="text"
-                placeholder="Place"
+                placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentInterest({

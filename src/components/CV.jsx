@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useTranslation } from "gatsby-plugin-react-i18next"
+import { useTranslation, Trans } from "gatsby-plugin-react-i18next"
 import Pdf from "react-to-pdf"
 import { useElementSize, useWindowSize } from "usehooks-ts"
 
@@ -31,26 +31,46 @@ const CV = ({ cvdata }) => {
               cvdata.twitter ||
               cvdata.github) && (
               <h1 className="bg-blue-900 font-bold mt-4 px-2 text-lg">
-                Contact
+                <Trans>Contact</Trans>
               </h1>
             )}
-            {cvdata.address && <h2 className="px-4 font-bold mt-2">Address</h2>}
+            {cvdata.address && (
+              <h2 className="px-4 font-bold mt-2">
+                <Trans>Address</Trans>
+              </h2>
+            )}
             {cvdata.address && <p className="px-4">{cvdata.address}</p>}
-            {cvdata.email && <h2 className="px-4 font-bold">E-mail</h2>}
+            {cvdata.email && (
+              <h2 className="px-4 font-bold">
+                <Trans>E-mail</Trans>
+              </h2>
+            )}
             {cvdata.email && <p className="px-4">{cvdata.email}</p>}
-            {cvdata.website && <h2 className="px-4 font-bold">Website</h2>}
+            {cvdata.website && (
+              <h2 className="px-4 font-bold">
+                <Trans>Website</Trans>
+              </h2>
+            )}
             {cvdata.website && (
               <a className="px-4" href={cvdata.website}>
                 {cvdata.website}
               </a>
             )}
-            {cvdata.twitter && <h2 className="px-4 font-bold">Twitter</h2>}
+            {cvdata.twitter && (
+              <h2 className="px-4 font-bold">
+                <Trans>Twitter</Trans>
+              </h2>
+            )}
             {cvdata.twitter && (
               <a className="px-4" href={cvdata.twitter}>
                 {cvdata.twitter}
               </a>
             )}
-            {cvdata.github && <h2 className="px-4 font-bold">Github</h2>}
+            {cvdata.github && (
+              <h2 className="px-4 font-bold">
+                <Trans>Github</Trans>
+              </h2>
+            )}
             {cvdata.github && (
               <a className="px-4" href={cvdata.github}>
                 {cvdata.github}
@@ -58,7 +78,7 @@ const CV = ({ cvdata }) => {
             )}
             {cvdata.skills.length > 0 && (
               <h1 className="bg-blue-900 font-bold text-lg px-2 mt-4">
-                Skills
+                <Trans>Skills</Trans>
               </h1>
             )}
             {cvdata.skills.length > 0 && (
@@ -69,7 +89,9 @@ const CV = ({ cvdata }) => {
               </ul>
             )}
             {cvdata.languages.length > 0 && (
-              <h1 className="bg-blue-900 font-bold px-2 text-lg">Languages</h1>
+              <h1 className="bg-blue-900 font-bold px-2 text-lg">
+                <Trans>Languages</Trans>
+              </h1>
             )}
             {cvdata.languages.length > 0 && (
               <ul className="p-4">
@@ -81,7 +103,9 @@ const CV = ({ cvdata }) => {
           </section>
           <section className="col-span-3 px-8">
             {!cvdata.excerpt ? (
-              <p>Insert summary here...</p>
+              <p>
+                <Trans>Insert summary here...</Trans>
+              </p>
             ) : (
               <p className="py-8 text-justify">{cvdata.excerpt}</p>
             )}
@@ -89,7 +113,9 @@ const CV = ({ cvdata }) => {
             {cvdata.awards.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-blue-800 font-bold text-lg">Awards</h1>
+                <h1 className="py-4 text-blue-800 font-bold text-lg">
+                  <Trans>Awards</Trans>
+                </h1>
                 <hr />
                 {cvdata.awards.map((i, index) => (
                   <div
@@ -110,7 +136,7 @@ const CV = ({ cvdata }) => {
               <>
                 <hr />
                 <h1 className="py-4 text-blue-800 font-bold text-lg">
-                  Publications
+                  <Trans>Publications</Trans>
                 </h1>
                 <hr />
                 {cvdata.publications.map((p, index) => (
@@ -131,7 +157,7 @@ const CV = ({ cvdata }) => {
             {cvdata.projects.length > 0 && (
               <>
                 <h1 className="py-4 text-blue-800 font-bold text-lg">
-                  Projects
+                  <Trans>Projects</Trans>
                 </h1>
                 <hr />
                 {cvdata.projects.map((p, index) => (
@@ -158,7 +184,7 @@ const CV = ({ cvdata }) => {
             {cvdata.work.length > 0 && (
               <>
                 <h1 className="py-4 text-blue-800 font-bold text-lg">
-                  Work History
+                  <Trans>Work History</Trans>
                 </h1>
                 <hr />
                 {cvdata.work.map((w, index) => (
@@ -182,7 +208,7 @@ const CV = ({ cvdata }) => {
               <>
                 <hr />
                 <h1 className="py-4 text-blue-800 font-bold text-lg">
-                  Education
+                  <Trans>Education</Trans>
                 </h1>
                 <hr />
                 {cvdata.education.map((e, index) => (
@@ -204,7 +230,7 @@ const CV = ({ cvdata }) => {
               <>
                 <hr />
                 <h1 className="py-4 text-blue-800 font-bold text-lg">
-                  Interests
+                  <Trans>Interests</Trans>
                 </h1>
                 <hr />
                 {cvdata.interests.map((i, index) => (
@@ -226,7 +252,7 @@ const CV = ({ cvdata }) => {
       </div>
       <div className="flex items-center justify-end">
         <p className="mr-4">
-          CV dimensions: {width} x {height} px
+          <Trans>CV dimensions:</Trans> {width} x {height} px
         </p>
       </div>
       <div className="container max-w-screen-lg mx-auto flex flex-row items-center justify-center mt-4 mb-12">
@@ -245,7 +271,7 @@ const CV = ({ cvdata }) => {
               onClick={toPdf}
               className="border-2 border-blue-700 text-blue-700 font-bold rounded-lg p-4 hover:text-white hover:bg-blue-700"
             >
-              Export Pdf
+              <Trans>Export Pdf</Trans>
             </button>
           )}
         </Pdf>
