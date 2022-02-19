@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { useTranslation, useI18next } from "gatsby-plugin-react-i18next"
+import { useTranslation, useI18next, Trans } from "gatsby-plugin-react-i18next"
 import Card from "../components/Card"
 import CuVi from "../components/CV"
 import Footer from "../components/Footer"
@@ -224,32 +224,38 @@ const Home = () => {
             href="/about"
             className="rounded-xl px-4 mr-8 my-4 ml-auto border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700"
           >
-            About
+            <Trans>About</Trans>
           </a>
         </div>
-        <h1 className="font-bold text-lg lg:text-4xl my-auto">CV Maker</h1>
+        <h1 className="font-bold text-lg lg:text-4xl my-auto">
+          <Trans>CV Maker</Trans>
+        </h1>
         <p className="font-montserrat">
           Crearemos un CV a partir de un formulario
         </p>
         <small className="mb-8">
-          Actualmente no estamos validándolo, así que depende de ti introducir
-          los valores correctos
+          <Trans>
+            Actualmente no estamos validándolo, así que depende de ti introducir
+            los valores correctos
+          </Trans>
         </small>
         <div className="flex flex-col md:flex-row w-full container mx-auto items-center md:items-start justify-center">
           <form className="flex flex-col flex-nowrap items-center justify-start w-full max-h-[90vh] overflow-y-auto md:max-w-xs scroll-smooth md:mr-8 md:scrollbar dark:md:scrollbardark">
             <Card>
-              <label htmlFor="full-name">Nombre, cargo y resumen</label>
+              <label htmlFor="full-name">
+                <Trans>Nombre, cargo y resumen</Trans>
+              </label>
               <input
                 id="full-name"
                 type="text"
-                placeholder="Nombre completo"
+                placeholder={t("Nombre completo")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCVdata({ ...cvdata, name: e.target.value })}
               />
               <input
                 id="position"
                 type="text"
-                placeholder="What are you?"
+                placeholder={t("What are you?")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, position: e.target.value })
@@ -266,7 +272,9 @@ const Home = () => {
               />
             </Card>
             <Card>
-              <label htmlFor="address">Contact info</label>
+              <label htmlFor="address">
+                <Trans>Contact info</Trans>
+              </label>
               <input
                 id="address"
                 type="text"
@@ -310,7 +318,9 @@ const Home = () => {
               />
             </Card>
             <Card>
-              <label htmlFor="skills">Skills</label>
+              <label htmlFor="skills">
+                <Trans>Skills</Trans>
+              </label>
               <input
                 id="skills"
                 type="text"
@@ -325,19 +335,21 @@ const Home = () => {
                   onClick={addSkill}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Add
+                  <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remSkill}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Remove
+                  <Trans>Remove</Trans>
                 </button>
               </div>
             </Card>
             <Card>
-              <label htmlFor="languages">Languajes</label>
+              <label htmlFor="languages">
+                <Trans>Languajes</Trans>
+              </label>
               <input
                 id="languages"
                 type="text"
@@ -352,19 +364,21 @@ const Home = () => {
                   onClick={addlanguage}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Add
+                  <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remlanguage}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Remove
+                  <Trans>Remove</Trans>
                 </button>
               </div>
             </Card>
             <Card>
-              <label htmlFor="education">Education</label>
+              <label htmlFor="education">
+                <Trans>Education</Trans>
+              </label>
               <input
                 id="education_date"
                 type="text"
@@ -410,19 +424,21 @@ const Home = () => {
                   onClick={addEducation}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Add
+                  <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remEducation}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Remove
+                  <Trans>Remove</Trans>
                 </button>
               </div>
             </Card>
             <Card>
-              <label htmlFor="work">Work History</label>
+              <label htmlFor="work">
+                <Trans>Work History</Trans>
+              </label>
               <input
                 id="work_date"
                 type="text"
@@ -482,19 +498,21 @@ const Home = () => {
                   onClick={addWork}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Add
+                  <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remWork}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Remove
+                  <Trans>Remove</Trans>
                 </button>
               </div>
             </Card>
             <Card>
-              <label htmlFor="projects">Projects</label>
+              <label htmlFor="projects">
+                <Trans>Projects</Trans>
+              </label>
               <input
                 id="projects_date"
                 type="text"
@@ -554,19 +572,21 @@ const Home = () => {
                   onClick={addProject}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Add
+                  <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remProject}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Remove
+                  <Trans>Remove</Trans>
                 </button>
               </div>
             </Card>
             <Card>
-              <label htmlFor="awards">Awards</label>
+              <label htmlFor="awards">
+                <Trans>Awards</Trans>
+              </label>
               <input
                 id="award_date"
                 type="text"
@@ -612,19 +632,21 @@ const Home = () => {
                   onClick={addAward}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Add
+                  <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remAward}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Remove
+                  <Trans>Remove</Trans>
                 </button>
               </div>
             </Card>
             <Card>
-              <label htmlFor="publications">Publications</label>
+              <label htmlFor="publications">
+                <Trans>Publications</Trans>
+              </label>
               <input
                 id="publication_date"
                 type="text"
@@ -670,19 +692,21 @@ const Home = () => {
                   onClick={addPublication}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Add
+                  <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remPublication}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Remove
+                  <Trans>Remove</Trans>
                 </button>
               </div>
             </Card>
             <Card>
-              <label htmlFor="interests">Interests</label>
+              <label htmlFor="interests">
+                <Trans>Interests</Trans>
+              </label>
               <input
                 id="interest_date"
                 type="text"
@@ -728,14 +752,14 @@ const Home = () => {
                   onClick={addInterest}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Add
+                  <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remInterest}
                   className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
                 >
-                  Remove
+                  <Trans>Remove</Trans>
                 </button>
               </div>
             </Card>
