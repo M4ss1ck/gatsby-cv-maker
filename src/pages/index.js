@@ -31,13 +31,13 @@ const Home = () => {
     excerpt: "",
   })
 
-  // React.useEffect(() => {
-  //   setCVdata(JSON.parse(localStorage.getItem("cvdata")))
-  // }, [])
+  React.useEffect(() => {
+    setCVdata(JSON.parse(localStorage.getItem("cvdata")))
+  }, [])
 
-  // React.useEffect(() => {
-  //   localStorage.setItem("cvdata", cvdata)
-  // }, [cvdata])
+  React.useEffect(() => {
+    localStorage.setItem("cvdata", JSON.stringify(cvdata))
+  }, [cvdata])
 
   const [currentLang, setCurrentLang] = React.useState("")
   const addlanguage = () => {

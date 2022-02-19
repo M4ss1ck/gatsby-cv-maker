@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useTranslation, Trans } from "gatsby-plugin-react-i18next"
+import { Trans } from "gatsby-plugin-react-i18next"
 import Pdf from "react-to-pdf"
 import { useElementSize, useWindowSize } from "usehooks-ts"
 
@@ -11,8 +11,6 @@ const CV = ({ cvdata }) => {
   // https://usehooks-ts.com/react-hook/use-window-size
   const { width } = useWindowSize()
 
-  const { t } = useTranslation()
-  //const { language } = useI18next()
   return (
     <>
       <div ref={ref}>
