@@ -1,10 +1,15 @@
 import React from "react"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
 
+interface Props {
+  theme: string
+  toggleTheme: (theme: string) => void
+}
+
 const darkToggle = () => {
   return (
     <ThemeToggler>
-      {({ theme, toggleTheme }) => (
+      {({ theme, toggleTheme }:Props) => (
         <div className="relative m-auto">
           <input
             type="checkbox"

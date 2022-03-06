@@ -12,7 +12,26 @@ const Home = () => {
   const { t } = useTranslation()
   const { language } = useI18next()
 
-  const [cvdata, setCVdata] = React.useState({
+  type CVData ={
+    name: string;
+    position: string;
+    address: string;
+    email: string;
+    website: string;
+    twitter: string;
+    github: string;
+    skills: any[];
+    languages: any[];
+    education: any[];
+    work: any[];
+    projects: any[];
+    awards: any[];
+    publications: any[];
+    interests: any[];
+    excerpt: string;
+}
+
+  const [cvdata, setCVdata] = React.useState<CVData>({
     name: "",
     position: "",
     address: "",
@@ -32,7 +51,7 @@ const Home = () => {
   })
 
   React.useEffect(() => {
-    setCVdata(JSON.parse(localStorage.getItem("cvdata")))
+    setCVdata(JSON.parse(localStorage.getItem("cvdata") || '{}'))
   }, [])
 
   React.useEffect(() => {
@@ -263,7 +282,6 @@ const Home = () => {
               />
               <textarea
                 id="excerpt"
-                type="text"
                 placeholder={t("Summary")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -394,7 +412,6 @@ const Home = () => {
               />
               <textarea
                 id="education_title"
-                type="text"
                 placeholder={t("Title")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -407,7 +424,6 @@ const Home = () => {
               />
               <textarea
                 id="education_small"
-                type="text"
                 placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -454,7 +470,6 @@ const Home = () => {
               />
               <textarea
                 id="work_title"
-                type="text"
                 placeholder={t("Position")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -467,7 +482,6 @@ const Home = () => {
               />
               <textarea
                 id="work_small"
-                type="text"
                 placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -480,7 +494,6 @@ const Home = () => {
               />
               <textarea
                 id="work_info"
-                type="text"
                 placeholder={t("More info")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 rows={5}
@@ -554,7 +567,6 @@ const Home = () => {
               />
               <textarea
                 id="projects_info"
-                type="text"
                 placeholder={t("More info")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 rows={5}
@@ -602,7 +614,6 @@ const Home = () => {
               />
               <textarea
                 id="award_title"
-                type="text"
                 placeholder={t("Title")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -615,7 +626,6 @@ const Home = () => {
               />
               <textarea
                 id="award_small"
-                type="text"
                 placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -662,7 +672,6 @@ const Home = () => {
               />
               <textarea
                 id="publication_title"
-                type="text"
                 placeholder={t("Title")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -675,7 +684,6 @@ const Home = () => {
               />
               <textarea
                 id="publication_small"
-                type="text"
                 placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -722,7 +730,6 @@ const Home = () => {
               />
               <textarea
                 id="interest_title"
-                type="text"
                 placeholder={t("Title")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
@@ -735,7 +742,6 @@ const Home = () => {
               />
               <textarea
                 id="interest_small"
-                type="text"
                 placeholder={t("Place")}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
