@@ -12,6 +12,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "show": "gatsby clean && gatsby build && gatsby serve -o",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "extract": "npx babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   },

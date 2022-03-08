@@ -3,7 +3,7 @@ import { Trans } from "gatsby-plugin-react-i18next"
 import Pdf from "react-to-pdf"
 import { useElementSize, useWindowSize } from "usehooks-ts"
 
-type CVData ={
+interface CVData {
   cvdata: {
     name: string;
     position: string;
@@ -12,12 +12,12 @@ type CVData ={
     website: string;
     twitter: string;
     github: string;
-    skills: any[];
-    languages: any[];
+    skills: string[];
+    languages: string[];
     education: any[];
     work: any[];
     projects: any[];
-    awards: any[];
+    awards: Array<{date?: string, title?: string, small?:string}>;
     publications: any[];
     interests: any[];
     excerpt: string;
@@ -102,7 +102,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
             )}
             {cvdata.skills?.length > 0 && (
               <ul className="p-4 mt-2">
-                {cvdata.skills.map((skill:any, index:number) => (
+                {cvdata.skills.map((skill, index:number) => (
                   <li key={index}>{skill}</li>
                 ))}
               </ul>
@@ -114,7 +114,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
             )}
             {cvdata.languages?.length > 0 && (
               <ul className="p-4">
-                {cvdata.languages.map((lang:any, index:number) => (
+                {cvdata.languages.map((lang, index:number) => (
                   <li key={index}>{lang}</li>
                 ))}
               </ul>
@@ -136,7 +136,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
                   <Trans>Awards</Trans>
                 </h1>
                 <hr />
-                {cvdata.awards.map((i:any, index:number) => (
+                {cvdata.awards.map((i, index:number) => (
                   <div
                     className="flex flex-col md:grid md:grid-cols-6"
                     key={index}

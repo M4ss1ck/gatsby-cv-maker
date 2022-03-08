@@ -1,4 +1,4 @@
-import React from "react"
+import React, { MouseEventHandler } from "react"
 import { graphql } from "gatsby"
 import { useTranslation, useI18next, Trans } from "gatsby-plugin-react-i18next"
 import Card from "../components/Card"
@@ -12,7 +12,7 @@ const Home = () => {
   const { t } = useTranslation()
   const { language } = useI18next()
 
-  type CVData ={
+  interface CVData {
     name: string;
     position: string;
     address: string;
@@ -64,19 +64,21 @@ const Home = () => {
     setCVdata({ ...cvdata, languages: newLangs })
     setCurrentLang("")
   }
-  const remlanguage = () => {
+  const remlanguage = () => {    
     const newLangs = cvdata.languages.slice(0, -1)
     setCVdata({ ...cvdata, languages: newLangs })
     setCurrentLang("")
   }
 
   const [currentSkill, setCurrentSkill] = React.useState("")
-  const addSkill = () => {
+  const addSkill = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     const newSkills = [...cvdata.skills, currentSkill]
     setCVdata({ ...cvdata, skills: newSkills })
     setCurrentSkill("")
   }
-  const remSkill = () => {
+  const remSkill = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     const newSkills = cvdata.skills.slice(0, -1)
     setCVdata({ ...cvdata, skills: newSkills })
     setCurrentSkill("")
