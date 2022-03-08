@@ -17,7 +17,7 @@ interface CVData {
     education: any[];
     work: any[];
     projects: any[];
-    awards: Array<{date?: string, title?: string, small?:string}>;
+    awards: {date: string, title: string, small:string}[];
     publications: any[];
     interests: any[];
     excerpt: string;

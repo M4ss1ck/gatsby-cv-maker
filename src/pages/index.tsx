@@ -20,8 +20,8 @@ const Home = () => {
     website: string;
     twitter: string;
     github: string;
-    skills: any[];
-    languages: any[];
+    skills: string[];
+    languages: string[];
     education: any[];
     work: any[];
     projects: any[];
@@ -30,28 +30,28 @@ const Home = () => {
     interests: any[];
     excerpt: string;
 }
-
-  const [cvdata, setCVdata] = React.useState<CVData>({
-    name: "",
-    position: "",
-    address: "",
-    email: "",
-    website: "",
-    twitter: "",
-    github: "",
-    skills: [],
-    languages: [],
-    education: [],
-    work: [],
-    projects: [],
-    awards: [],
-    publications: [],
-    interests: [],
-    excerpt: "",
-  })
+const emptycvdata: CVData = {
+  name: "",
+  position: "",
+  address: "",
+  email: "",
+  website: "",
+  twitter: "",
+  github: "",
+  skills: [],
+  languages: [],
+  education: [],
+  work: [],
+  projects: [],
+  awards: [],
+  publications: [],
+  interests: [],
+  excerpt: "",
+}
+  const [cvdata, setCVdata] = React.useState<CVData>(emptycvdata)
 
   React.useEffect(() => {
-    setCVdata(JSON.parse(localStorage.getItem("cvdata") || '{}'))
+    setCVdata(JSON.parse(localStorage.getItem("cvdata") || JSON.stringify(emptycvdata)))
   }, [])
 
   React.useEffect(() => {
@@ -60,12 +60,12 @@ const Home = () => {
 
   const [currentLang, setCurrentLang] = React.useState("")
   const addlanguage = () => {
-    const newLangs = [...cvdata.languages, currentLang]
+    const newLangs = cvdata.languages ? [...cvdata.languages, currentLang] : [currentLang]
     setCVdata({ ...cvdata, languages: newLangs })
     setCurrentLang("")
   }
   const remlanguage = () => {    
-    const newLangs = cvdata.languages.slice(0, -1)
+    const newLangs = cvdata.languages ? cvdata.languages.slice(0, -1) : []
     setCVdata({ ...cvdata, languages: newLangs })
     setCurrentLang("")
   }
@@ -73,13 +73,13 @@ const Home = () => {
   const [currentSkill, setCurrentSkill] = React.useState("")
   const addSkill = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    const newSkills = [...cvdata.skills, currentSkill]
+    const newSkills = cvdata.skills ? [...cvdata.skills, currentSkill] : [currentSkill]
     setCVdata({ ...cvdata, skills: newSkills })
     setCurrentSkill("")
   }
   const remSkill = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    const newSkills = cvdata.skills.slice(0, -1)
+    const newSkills = cvdata.skills ? cvdata.skills.slice(0, -1) : []
     setCVdata({ ...cvdata, skills: newSkills })
     setCurrentSkill("")
   }
@@ -90,7 +90,7 @@ const Home = () => {
     small: "",
   })
   const addEducation = () => {
-    const newEducation = [...cvdata.education, currentEducation]
+    const newEducation = cvdata.education ? [...cvdata.education, currentEducation] : [currentEducation]
     setCVdata({ ...cvdata, education: newEducation })
     setCurrentEducation({
       date: "",
@@ -99,7 +99,7 @@ const Home = () => {
     })
   }
   const remEducation = () => {
-    const newEducation = cvdata.education.slice(0, -1)
+    const newEducation = cvdata.education ? cvdata.education.slice(0, -1) : []
     setCVdata({ ...cvdata, education: newEducation })
     setCurrentEducation({
       date: "",
@@ -115,7 +115,7 @@ const Home = () => {
     info: "",
   })
   const addWork = () => {
-    const newWork = [...cvdata.work, currentWork]
+    const newWork = cvdata.work ? [...cvdata.work, currentWork] : [currentWork]
     setCVdata({ ...cvdata, work: newWork })
     setCurrentWork({
       date: "",
@@ -125,7 +125,7 @@ const Home = () => {
     })
   }
   const remWork = () => {
-    const newWork = cvdata.work.slice(0, -1)
+    const newWork = cvdata.work ? cvdata.work.slice(0, -1) : []
     setCVdata({ ...cvdata, work: newWork })
     setCurrentWork({
       date: "",
@@ -142,7 +142,7 @@ const Home = () => {
     info: "",
   })
   const addProject = () => {
-    const newProject = [...cvdata.projects, currentProject]
+    const newProject = cvdata.projects ? [...cvdata.projects, currentProject] : [currentProject]
     setCVdata({ ...cvdata, projects: newProject })
     setCurrentProject({
       date: "",
@@ -152,7 +152,7 @@ const Home = () => {
     })
   }
   const remProject = () => {
-    const newProject = cvdata.projects.slice(0, -1)
+    const newProject = cvdata.projects ? cvdata.projects.slice(0, -1) : []
     setCVdata({ ...cvdata, projects: newProject })
     setCurrentProject({
       date: "",
@@ -168,7 +168,7 @@ const Home = () => {
     small: "",
   })
   const addAward = () => {
-    const newAward = [...cvdata.awards, currentAward]
+    const newAward = cvdata.awards ? [...cvdata.awards, currentAward] : [currentAward]
     setCVdata({ ...cvdata, awards: newAward })
     setCurrentAward({
       date: "",
@@ -177,7 +177,7 @@ const Home = () => {
     })
   }
   const remAward = () => {
-    const newAward = cvdata.awards.slice(0, -1)
+    const newAward = cvdata.awards ? cvdata.awards.slice(0, -1) : []
     setCVdata({ ...cvdata, awards: newAward })
     setCurrentAward({
       date: "",
@@ -192,7 +192,7 @@ const Home = () => {
     small: "",
   })
   const addPublication = () => {
-    const newPublication = [...cvdata.publications, currentPublication]
+    const newPublication = cvdata.publications ? [...cvdata.publications, currentPublication] : [currentPublication]
     setCVdata({ ...cvdata, publications: newPublication })
     setCurrentPublication({
       date: "",
@@ -201,7 +201,7 @@ const Home = () => {
     })
   }
   const remPublication = () => {
-    const newPublication = cvdata.publications.slice(0, -1)
+    const newPublication = cvdata.publications ? cvdata.publications.slice(0, -1) : []
     setCVdata({ ...cvdata, publications: newPublication })
     setCurrentPublication({
       date: "",
@@ -216,7 +216,7 @@ const Home = () => {
     small: "",
   })
   const addInterest = () => {
-    const newInterest = [...cvdata.interests, currentInterest]
+    const newInterest = cvdata.interests ? [...cvdata.interests, currentInterest] : [currentInterest]
     setCVdata({ ...cvdata, interests: newInterest })
     setCurrentInterest({
       date: "",
@@ -225,7 +225,7 @@ const Home = () => {
     })
   }
   const remInterest = () => {
-    const newInterest = cvdata.interests.slice(0, -1)
+    const newInterest = cvdata.interests ? cvdata.interests.slice(0, -1) : []
     setCVdata({ ...cvdata, interests: newInterest })
     setCurrentInterest({
       date: "",
