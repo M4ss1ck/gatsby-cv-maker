@@ -1,4 +1,9 @@
-module.exports = {
+import type { GatsbyConfig } from "gatsby"
+
+const path = __dirname.replace('\\.cache\\compiled', '')
+console.log(path);
+
+const config: GatsbyConfig = {
   siteMetadata: {
     title: `CV maker`,
     author: {
@@ -18,7 +23,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/locales`,
+        path: `${path}/locales`,
         name: `locale`,
       },
     },
@@ -44,3 +49,5 @@ module.exports = {
     `gatsby-plugin-netlify`,
   ],
 }
+
+export default config
