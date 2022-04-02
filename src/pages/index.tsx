@@ -343,7 +343,7 @@ const Home = () => {
               <input
                 id="linkedin"
                 type="url"
-                placeholder={"Linkedin"}
+                placeholder={"LinkedIn"}
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, linkedin: e.target.value })
