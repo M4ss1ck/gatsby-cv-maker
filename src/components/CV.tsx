@@ -37,11 +37,11 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
     <>
       <div ref={ref}>
         <article
-          className="mx-auto container grid grid-cols-1 sm:grid-cols-4 font-montserrat max-w-screen-lg"
+          className="mx-auto container grid grid-cols-1 sm:grid-cols-3 font-montserrat max-w-screen-lg"
           ref={articleRef}
         >
-          <section className="bg-blue-800 text-white text-center md:text-left">
-            <h1 className="font-extrabold text-2xl md:text-4xl p-2">
+          <section className="bg-blue-800 text-white text-center md:text-left break-all">
+            <h1 className="font-extrabold text-2xl md:text-4xl p-2 break-normal break-words">
               {cvdata.name}
             </h1>
             <p className="px-4">{cvdata.position}</p>
@@ -51,88 +51,92 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
               cvdata.linkedin ||
               cvdata.twitter ||
               cvdata.github) && (
-              <h1 className="bg-blue-900 font-bold mt-4 px-2 text-lg">
+              <h1 className="bg-blue-900 font-bold mt-4 px-2 text-lg flex justify-center">
                 <Trans>Contact</Trans>
               </h1>
             )}
             {cvdata.address && (
-              <h2 className="px-4 font-bold mt-2">
+              <h2 className="px-4 font-bold mt-2 flex justify-center">
                 <Trans>Address</Trans>
               </h2>
             )}
-            {cvdata.address && <p className="px-4">{cvdata.address}</p>}
+            {cvdata.address && (
+              <p className="px-4 flex justify-center">{cvdata.address}</p>
+            )}
             {cvdata.email && (
-              <h2 className="px-4 font-bold">
+              <h2 className="px-4 font-bold flex justify-center">
                 <Trans>E-mail</Trans>
               </h2>
             )}
-            {cvdata.email && <p className="px-4">{cvdata.email}</p>}
+            {cvdata.email && (
+              <p className="px-4 flex justify-center">{cvdata.email}</p>
+            )}
             {cvdata.website && (
-              <h2 className="px-4 font-bold">
+              <h2 className="px-4 font-bold flex justify-center">
                 <Trans>Website</Trans>
               </h2>
             )}
             {cvdata.website && (
-              <a className="px-4" href={cvdata.website}>
+              <a className="px-4 flex justify-center" href={cvdata.website}>
                 {cvdata.website}
               </a>
             )}
             {cvdata.linkedin && (
-              <h2 className="px-4 font-bold">
+              <h2 className="px-4 font-bold flex justify-center">
                 <Trans>LinkedIn</Trans>
               </h2>
             )}
             {cvdata.linkedin && (
-              <a className="px-4" href={cvdata.linkedin}>
+              <a className="px-4 flex justify-center" href={cvdata.linkedin}>
                 {cvdata.linkedin}
               </a>
             )}
             {cvdata.twitter && (
-              <h2 className="px-4 font-bold">
+              <h2 className="px-4 font-bold flex justify-center">
                 <Trans>Twitter</Trans>
               </h2>
             )}
             {cvdata.twitter && (
-              <a className="px-4" href={cvdata.twitter}>
+              <a className="px-4 flex justify-center" href={cvdata.twitter}>
                 {cvdata.twitter}
               </a>
             )}
             {cvdata.github && (
-              <h2 className="px-4 font-bold">
+              <h2 className="px-4 font-bold flex justify-center">
                 <Trans>Github</Trans>
               </h2>
             )}
             {cvdata.github && (
-              <a className="px-4" href={cvdata.github}>
+              <a className="px-4 flex justify-center" href={cvdata.github}>
                 {cvdata.github}
               </a>
             )}
             {cvdata.skills?.length > 0 && (
-              <h1 className="bg-blue-900 font-bold text-lg px-2 mt-4">
+              <h1 className="bg-blue-900 font-bold text-lg px-2 mt-4 flex justify-center">
                 <Trans>Skills</Trans>
               </h1>
             )}
             {cvdata.skills?.length > 0 && (
-              <ul className="p-4 mt-2">
+              <ul className="p-4 mt-2 flex justify-center">
                 {cvdata.skills.map((skill, index: number) => (
                   <li key={index}>{skill}</li>
                 ))}
               </ul>
             )}
             {cvdata.languages?.length > 0 && (
-              <h1 className="bg-blue-900 font-bold px-2 text-lg">
+              <h1 className="bg-blue-900 font-bold px-2 text-lg flex justify-center">
                 <Trans>Languages</Trans>
               </h1>
             )}
             {cvdata.languages?.length > 0 && (
-              <ul className="p-4">
+              <ul className="p-4 flex justify-center">
                 {cvdata.languages.map((lang, index: number) => (
                   <li key={index}>{lang}</li>
                 ))}
               </ul>
             )}
           </section>
-          <section className="col-span-3 px-8">
+          <section className="col-span-2 px-8">
             {!cvdata.excerpt ? (
               <p>
                 <Trans>Insert summary here...</Trans>
