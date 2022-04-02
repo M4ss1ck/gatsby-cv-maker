@@ -13,45 +13,49 @@ const Home = () => {
   const { language } = useI18next()
 
   interface CVData {
-    name: string;
-    position: string;
-    address: string;
-    email: string;
-    website: string;
-    twitter: string;
-    github: string;
-    skills: string[];
-    languages: string[];
-    education: any[];
-    work: any[];
-    projects: any[];
-    awards: any[];
-    publications: any[];
-    interests: any[];
-    excerpt: string;
-}
-const emptycvdata: CVData = {
-  name: "",
-  position: "",
-  address: "",
-  email: "",
-  website: "",
-  twitter: "",
-  github: "",
-  skills: [],
-  languages: [],
-  education: [],
-  work: [],
-  projects: [],
-  awards: [],
-  publications: [],
-  interests: [],
-  excerpt: "",
-}
+    name: string
+    position: string
+    address: string
+    email: string
+    website: string
+    twitter: string
+    linkedin: string
+    github: string
+    skills: string[]
+    languages: string[]
+    education: any[]
+    work: any[]
+    projects: any[]
+    awards: any[]
+    publications: any[]
+    interests: any[]
+    excerpt: string
+  }
+  const emptycvdata: CVData = {
+    name: "",
+    position: "",
+    address: "",
+    email: "",
+    website: "",
+    twitter: "",
+    linkedin: "",
+    github: "",
+    skills: [],
+    languages: [],
+    education: [],
+    work: [],
+    projects: [],
+    awards: [],
+    publications: [],
+    interests: [],
+    excerpt: "",
+  }
   const [cvdata, setCVdata] = React.useState<CVData>(emptycvdata)
 
   React.useEffect(() => {
-    setCVdata(JSON.parse(localStorage.getItem("cvdata") || JSON.stringify(emptycvdata)))
+    setCVdata(
+      JSON.parse(localStorage.getItem("cvdata") || JSON.stringify(emptycvdata))
+    )
   }, [])
 
   React.useEffect(() => {
@@ -60,11 +64,13 @@ const emptycvdata: CVData = {
 
   const [currentLang, setCurrentLang] = React.useState("")
   const addlanguage = () => {
-    const newLangs = cvdata.languages ? [...cvdata.languages, currentLang] : [currentLang]
+    const newLangs = cvdata.languages
+      ? [...cvdata.languages, currentLang]
+      : [currentLang]
     setCVdata({ ...cvdata, languages: newLangs })
     setCurrentLang("")
   }
-  const remlanguage = () => {    
+  const remlanguage = () => {
     const newLangs = cvdata.languages ? cvdata.languages.slice(0, -1) : []
     setCVdata({ ...cvdata, languages: newLangs })
     setCurrentLang("")
@@ -73,7 +79,9 @@ const emptycvdata: CVData = {
   const [currentSkill, setCurrentSkill] = React.useState("")
   const addSkill = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    const newSkills = cvdata.skills ? [...cvdata.skills, currentSkill] : [currentSkill]
+    const newSkills = cvdata.skills
+      ? [...cvdata.skills, currentSkill]
+      : [currentSkill]
     setCVdata({ ...cvdata, skills: newSkills })
     setCurrentSkill("")
   }
@@ -90,7 +98,9 @@ const emptycvdata: CVData = {
     small: "",
   })
   const addEducation = () => {
-    const newEducation = cvdata.education ? [...cvdata.education, currentEducation] : [currentEducation]
+    const newEducation = cvdata.education
+      ? [...cvdata.education, currentEducation]
+      : [currentEducation]
     setCVdata({ ...cvdata, education: newEducation })
     setCurrentEducation({
       date: "",
@@ -142,7 +152,9 @@ const emptycvdata: CVData = {
     info: "",
   })
   const addProject = () => {
-    const newProject = cvdata.projects ? [...cvdata.projects, currentProject] : [currentProject]
+    const newProject = cvdata.projects
+      ? [...cvdata.projects, currentProject]
+      : [currentProject]
     setCVdata({ ...cvdata, projects: newProject })
     setCurrentProject({
       date: "",
@@ -168,7 +180,9 @@ const emptycvdata: CVData = {
     small: "",
   })
   const addAward = () => {
-    const newAward = cvdata.awards ? [...cvdata.awards, currentAward] : [currentAward]
+    const newAward = cvdata.awards
+      ? [...cvdata.awards, currentAward]
+      : [currentAward]
     setCVdata({ ...cvdata, awards: newAward })
     setCurrentAward({
       date: "",
@@ -192,7 +206,9 @@ const emptycvdata: CVData = {
     small: "",
   })
   const addPublication = () => {
-    const newPublication = cvdata.publications ? [...cvdata.publications, currentPublication] : [currentPublication]
+    const newPublication = cvdata.publications
+      ? [...cvdata.publications, currentPublication]
+      : [currentPublication]
     setCVdata({ ...cvdata, publications: newPublication })
     setCurrentPublication({
       date: "",
@@ -201,7 +217,9 @@ const emptycvdata: CVData = {
     })
   }
   const remPublication = () => {
-    const newPublication = cvdata.publications ? cvdata.publications.slice(0, -1) : []
+    const newPublication = cvdata.publications
+      ? cvdata.publications.slice(0, -1)
+      : []
     setCVdata({ ...cvdata, publications: newPublication })
     setCurrentPublication({
       date: "",
@@ -216,7 +234,9 @@ const emptycvdata: CVData = {
     small: "",
   })
   const addInterest = () => {
-    const newInterest = cvdata.interests ? [...cvdata.interests, currentInterest] : [currentInterest]
+    const newInterest = cvdata.interests
+      ? [...cvdata.interests, currentInterest]
+      : [currentInterest]
     setCVdata({ ...cvdata, interests: newInterest })
     setCurrentInterest({
       date: "",
@@ -318,6 +338,15 @@ const emptycvdata: CVData = {
                 className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, website: e.target.value })
+                }
+              />
+              <input
+                id="linkedin"
+                type="url"
+                placeholder={"Linkedin"}
+                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                onChange={e =>
+                  setCVdata({ ...cvdata, linkedin: e.target.value })
                 }
               />
               <input

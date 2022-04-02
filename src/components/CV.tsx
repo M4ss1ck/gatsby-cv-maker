@@ -5,26 +5,27 @@ import { useElementSize, useWindowSize } from "usehooks-ts"
 
 interface CVData {
   cvdata: {
-    name: string;
-    position: string;
-    address: string;
-    email: string;
-    website: string;
-    twitter: string;
-    github: string;
-    skills: string[];
-    languages: string[];
-    education: any[];
-    work: any[];
-    projects: any[];
-    awards: {date: string, title: string, small:string}[];
-    publications: any[];
-    interests: any[];
-    excerpt: string;
-  }  
+    name: string
+    position: string
+    address: string
+    email: string
+    website: string
+    linkedin: string
+    twitter: string
+    github: string
+    skills: string[]
+    languages: string[]
+    education: any[]
+    work: any[]
+    projects: any[]
+    awards: { date: string; title: string; small: string }[]
+    publications: any[]
+    interests: any[]
+    excerpt: string
+  }
 }
 
-const CV:React.FC<CVData> = ( {cvdata}) => {
+const CV: React.FC<CVData> = ({ cvdata }) => {
   const ref = React.createRef() as React.RefObject<HTMLDivElement>
 
   // using https://usehooks-ts.com/react-hook/use-element-size
@@ -47,6 +48,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
             {(cvdata.address ||
               cvdata.email ||
               cvdata.website ||
+              cvdata.linkedin ||
               cvdata.twitter ||
               cvdata.github) && (
               <h1 className="bg-blue-900 font-bold mt-4 px-2 text-lg">
@@ -73,6 +75,16 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
             {cvdata.website && (
               <a className="px-4" href={cvdata.website}>
                 {cvdata.website}
+              </a>
+            )}
+            {cvdata.linkedin && (
+              <h2 className="px-4 font-bold">
+                <Trans>LinkedIn</Trans>
+              </h2>
+            )}
+            {cvdata.linkedin && (
+              <a className="px-4" href={cvdata.linkedin}>
+                {cvdata.linkedin}
               </a>
             )}
             {cvdata.twitter && (
@@ -102,7 +114,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
             )}
             {cvdata.skills?.length > 0 && (
               <ul className="p-4 mt-2">
-                {cvdata.skills.map((skill, index:number) => (
+                {cvdata.skills.map((skill, index: number) => (
                   <li key={index}>{skill}</li>
                 ))}
               </ul>
@@ -114,7 +126,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
             )}
             {cvdata.languages?.length > 0 && (
               <ul className="p-4">
-                {cvdata.languages.map((lang, index:number) => (
+                {cvdata.languages.map((lang, index: number) => (
                   <li key={index}>{lang}</li>
                 ))}
               </ul>
@@ -136,7 +148,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
                   <Trans>Awards</Trans>
                 </h1>
                 <hr />
-                {cvdata.awards.map((i, index:number) => (
+                {cvdata.awards.map((i, index: number) => (
                   <div
                     className="flex flex-col md:grid md:grid-cols-6"
                     key={index}
@@ -158,7 +170,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
                   <Trans>Publications</Trans>
                 </h1>
                 <hr />
-                {cvdata.publications.map((p:any, index:number) => (
+                {cvdata.publications.map((p: any, index: number) => (
                   <div
                     className="flex flex-col md:grid md:grid-cols-6"
                     key={index}
@@ -179,7 +191,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
                   <Trans>Projects</Trans>
                 </h1>
                 <hr />
-                {cvdata.projects.map((p:any, index:number) => (
+                {cvdata.projects.map((p: any, index: number) => (
                   <div
                     className="flex flex-col md:grid md:grid-cols-6 py-2"
                     key={index}
@@ -206,7 +218,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
                   <Trans>Work History</Trans>
                 </h1>
                 <hr />
-                {cvdata.work.map((w:any, index:number) => (
+                {cvdata.work.map((w: any, index: number) => (
                   <div
                     className="flex flex-col md:grid md:grid-cols-6 py-2"
                     key={index}
@@ -230,7 +242,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
                   <Trans>Education</Trans>
                 </h1>
                 <hr />
-                {cvdata.education.map((e:any, index:number) => (
+                {cvdata.education.map((e: any, index: number) => (
                   <div
                     className="flex flex-col md:grid md:grid-cols-6"
                     key={index}
@@ -252,7 +264,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
                   <Trans>Interests</Trans>
                 </h1>
                 <hr />
-                {cvdata.interests.map((i:any, index:number) => (
+                {cvdata.interests.map((i: any, index: number) => (
                   <div
                     className="flex flex-col md:grid md:grid-cols-6"
                     key={index}
@@ -285,7 +297,7 @@ const CV:React.FC<CVData> = ( {cvdata}) => {
           }}
           //scale={0.8}
         >
-          {({ toPdf }:any) => (
+          {({ toPdf }: any) => (
             <button
               onClick={toPdf}
               className="border-2 border-blue-700 text-blue-700 font-bold rounded-lg p-4 hover:text-white hover:bg-blue-700"
