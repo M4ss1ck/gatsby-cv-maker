@@ -37,11 +37,11 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
     <>
       <div ref={ref}>
         <article
-          className="mx-auto container grid grid-cols-1 sm:grid-cols-3 font-montserrat max-w-screen-lg"
+          className="container grid max-w-screen-lg grid-cols-1 mx-auto sm:grid-cols-3 font-montserrat"
           ref={articleRef}
         >
-          <section className="bg-blue-800 text-white text-center md:text-left break-all">
-            <h1 className="font-extrabold text-2xl md:text-4xl p-2 break-normal break-words">
+          <section className="text-center text-white break-all bg-blue-800 md:text-left">
+            <h1 className="p-2 text-2xl font-extrabold break-normal break-words md:text-4xl">
               {cvdata.name}
             </h1>
             <p className="px-4">{cvdata.position}</p>
@@ -51,85 +51,85 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
               cvdata.linkedin ||
               cvdata.twitter ||
               cvdata.github) && (
-              <h1 className="bg-blue-900 font-bold mt-4 px-2 text-lg flex justify-center">
+              <h1 className="flex justify-center px-2 mt-4 text-lg font-bold bg-blue-900">
                 <Trans>Contact</Trans>
               </h1>
             )}
             {cvdata.address && (
-              <h2 className="px-4 font-bold mt-2 flex justify-center">
+              <h2 className="flex justify-center px-4 mt-2 font-bold">
                 <Trans>Address</Trans>
               </h2>
             )}
             {cvdata.address && (
-              <p className="px-4 flex justify-center">{cvdata.address}</p>
+              <p className="flex justify-center px-4">{cvdata.address}</p>
             )}
             {cvdata.email && (
-              <h2 className="px-4 font-bold flex justify-center">
+              <h2 className="flex justify-center px-4 font-bold">
                 <Trans>E-mail</Trans>
               </h2>
             )}
             {cvdata.email && (
-              <p className="px-4 flex justify-center">{cvdata.email}</p>
+              <p className="flex justify-center px-4">{cvdata.email}</p>
             )}
             {cvdata.website && (
-              <h2 className="px-4 font-bold flex justify-center">
+              <h2 className="flex justify-center px-4 font-bold">
                 <Trans>Website</Trans>
               </h2>
             )}
             {cvdata.website && (
-              <a className="px-4 flex justify-center" href={cvdata.website}>
+              <a className="flex justify-center px-4" href={cvdata.website}>
                 {cvdata.website}
               </a>
             )}
             {cvdata.linkedin && (
-              <h2 className="px-4 font-bold flex justify-center">
+              <h2 className="flex justify-center px-4 font-bold">
                 <Trans>LinkedIn</Trans>
               </h2>
             )}
             {cvdata.linkedin && (
-              <a className="px-4 flex justify-center" href={cvdata.linkedin}>
+              <a className="flex justify-center px-4" href={cvdata.linkedin}>
                 {cvdata.linkedin}
               </a>
             )}
             {cvdata.twitter && (
-              <h2 className="px-4 font-bold flex justify-center">
+              <h2 className="flex justify-center px-4 font-bold">
                 <Trans>Twitter</Trans>
               </h2>
             )}
             {cvdata.twitter && (
-              <a className="px-4 flex justify-center" href={cvdata.twitter}>
+              <a className="flex justify-center px-4" href={cvdata.twitter}>
                 {cvdata.twitter}
               </a>
             )}
             {cvdata.github && (
-              <h2 className="px-4 font-bold flex justify-center">
+              <h2 className="flex justify-center px-4 font-bold">
                 <Trans>Github</Trans>
               </h2>
             )}
             {cvdata.github && (
-              <a className="px-4 flex justify-center" href={cvdata.github}>
+              <a className="flex justify-center px-4" href={cvdata.github}>
                 {cvdata.github}
               </a>
             )}
             {cvdata.skills?.length > 0 && (
-              <h1 className="bg-blue-900 font-bold text-lg px-2 mt-4 flex justify-center">
+              <h1 className="flex justify-center px-2 mt-4 text-lg font-bold bg-blue-900">
                 <Trans>Skills</Trans>
               </h1>
             )}
             {cvdata.skills?.length > 0 && (
-              <ul className="p-4 mt-2 flex justify-center">
+              <ul className="flex flex-col items-center justify-center p-4 mt-2">
                 {cvdata.skills.map((skill, index: number) => (
                   <li key={index}>{skill}</li>
                 ))}
               </ul>
             )}
             {cvdata.languages?.length > 0 && (
-              <h1 className="bg-blue-900 font-bold px-2 text-lg flex justify-center">
+              <h1 className="flex justify-center px-2 text-lg font-bold bg-blue-900">
                 <Trans>Languages</Trans>
               </h1>
             )}
             {cvdata.languages?.length > 0 && (
-              <ul className="p-4 flex justify-center">
+              <ul className="flex flex-col items-center justify-center p-4">
                 {cvdata.languages.map((lang, index: number) => (
                   <li key={index}>{lang}</li>
                 ))}
@@ -148,7 +148,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
             {cvdata.awards?.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-blue-800 font-bold text-lg">
+                <h1 className="py-4 text-lg font-bold text-blue-800">
                   <Trans>Awards</Trans>
                 </h1>
                 <hr />
@@ -159,7 +159,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
                   >
                     <p className="md:w-24">{i.date}</p>
                     <div className="col-span-5">
-                      <h2 className="font-bold text-lg">{i.title}</h2>
+                      <h2 className="text-lg font-bold">{i.title}</h2>
                       <small className="font-thin">{i.small}</small>
                     </div>
                   </div>
@@ -170,7 +170,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
             {cvdata.publications?.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-blue-800 font-bold text-lg">
+                <h1 className="py-4 text-lg font-bold text-blue-800">
                   <Trans>Publications</Trans>
                 </h1>
                 <hr />
@@ -181,7 +181,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
                   >
                     <p className="md:w-24">{p.date}</p>
                     <div className="col-span-5">
-                      <h2 className="font-bold text-lg">{p.title}</h2>
+                      <h2 className="text-lg font-bold">{p.title}</h2>
                       <small className="font-thin">{p.small}</small>
                     </div>
                   </div>
@@ -191,18 +191,18 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
 
             {cvdata.projects?.length > 0 && (
               <>
-                <h1 className="py-4 text-blue-800 font-bold text-lg">
+                <h1 className="py-4 text-lg font-bold text-blue-800">
                   <Trans>Projects</Trans>
                 </h1>
                 <hr />
                 {cvdata.projects.map((p: any, index: number) => (
                   <div
-                    className="flex flex-col md:grid md:grid-cols-6 py-2"
+                    className="flex flex-col py-2 md:grid md:grid-cols-6"
                     key={index}
                   >
                     <p className="md:w-24">{p.date}</p>
                     <div className="col-span-5">
-                      <h2 className="font-bold text-lg">{p.title}</h2>
+                      <h2 className="text-lg font-bold">{p.title}</h2>
                       <small>
                         <a href={p.url} className="font-thin text-blue-700">
                           {p.url}
@@ -218,18 +218,18 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
 
             {cvdata.work?.length > 0 && (
               <>
-                <h1 className="py-4 text-blue-800 font-bold text-lg">
+                <h1 className="py-4 text-lg font-bold text-blue-800">
                   <Trans>Work History</Trans>
                 </h1>
                 <hr />
                 {cvdata.work.map((w: any, index: number) => (
                   <div
-                    className="flex flex-col md:grid md:grid-cols-6 py-2"
+                    className="flex flex-col py-2 md:grid md:grid-cols-6"
                     key={index}
                   >
                     <p className="md:w-24">{w.date}</p>
                     <div className="col-span-5">
-                      <h2 className="font-bold text-lg">{w.position}</h2>
+                      <h2 className="text-lg font-bold">{w.position}</h2>
                       <small className="font-thin">{w.small}</small>
                       <p className="text-justify">{w.info}</p>
                     </div>
@@ -242,7 +242,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
             {cvdata.education?.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-blue-800 font-bold text-lg">
+                <h1 className="py-4 text-lg font-bold text-blue-800">
                   <Trans>Education</Trans>
                 </h1>
                 <hr />
@@ -253,7 +253,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
                   >
                     <p className="md:w-24">{e.date}</p>
                     <div className="col-span-5">
-                      <h2 className="font-bold text-lg">{e.title}</h2>
+                      <h2 className="text-lg font-bold">{e.title}</h2>
                       <small className="font-thin">{e.small}</small>
                     </div>
                   </div>
@@ -264,7 +264,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
             {cvdata.interests?.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-blue-800 font-bold text-lg">
+                <h1 className="py-4 text-lg font-bold text-blue-800">
                   <Trans>Interests</Trans>
                 </h1>
                 <hr />
@@ -275,7 +275,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
                   >
                     <p className="md:w-24">{i.date}</p>
                     <div className="col-span-5">
-                      <h2 className="font-bold text-lg">{i.title}</h2>
+                      <h2 className="text-lg font-bold">{i.title}</h2>
                       <small className="font-thin">{i.small}</small>
                     </div>
                   </div>
@@ -290,7 +290,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
           <Trans>CV dimensions:</Trans> {width} x {height} px
         </p>
       </div>
-      <div className="container max-w-screen-lg mx-auto flex flex-row items-center justify-center mt-4 mb-12">
+      <div className="container flex flex-row items-center justify-center max-w-screen-lg mx-auto mt-4 mb-12">
         <Pdf
           targetRef={ref}
           filename="my-cv.pdf"
@@ -304,7 +304,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
           {({ toPdf }: any) => (
             <button
               onClick={toPdf}
-              className="border-2 border-blue-700 text-blue-700 font-bold rounded-lg p-4 hover:text-white hover:bg-blue-700"
+              className="p-4 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-white hover:bg-blue-700"
             >
               <Trans>Export Pdf</Trans>
             </button>
