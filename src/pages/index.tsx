@@ -303,6 +303,7 @@ const Home = () => {
                   onImageRemoveAll,
                   isDragging,
                   dragProps,
+                  errors,
                 }) => (
                   // write your building UI
                   <div className="flex flex-col items-center w-full px-1 my-4">
@@ -326,6 +327,20 @@ const Home = () => {
                         <img src={image.dataURL} alt="photo" width="100" />
                       </div>
                     ))}
+                    {errors && (
+                      <div>
+                        {errors.acceptType && (
+                          <span className="text-red-500">
+                            <Trans>File not supported</Trans>
+                          </span>
+                        )}
+                        {errors.maxFileSize && (
+                          <span className="text-red-500">
+                            <Trans>File too big</Trans>
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )}
               </ImageUploading>

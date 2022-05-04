@@ -39,5 +39,7 @@
   "Sólo rellena el formulario y exporta el resultado.": "Only fill the form and export the result.",
   "Crear CV": "Create CV",
   "Photo": "Photo",
-  "Click or Drop here": "Click or Drop here"
+  "Click or Drop here": "Click or Drop here",
+  "File not supported": "File not supported",
+  "File too big": "File too big"
 }
