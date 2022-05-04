@@ -301,8 +301,6 @@ const Home = () => {
                   imageList,
                   onImageUpload,
                   onImageRemoveAll,
-                  onImageUpdate,
-                  onImageRemove,
                   isDragging,
                   dragProps,
                 }) => (
@@ -314,26 +312,18 @@ const Home = () => {
                       className="p-4 border border-blue-700 border-dashed rounded-xl"
                       {...dragProps}
                     >
-                      Click or Drop here
+                      <Trans>Click or Drop here</Trans>
                     </button>
 
                     <button
                       onClick={onImageRemoveAll}
                       className="p-2 px-2 my-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                     >
-                      Remove
+                      <Trans>Remove</Trans>
                     </button>
                     {imageList.map((image, index) => (
                       <div key={index} className="image-item">
-                        <img src={image.dataURL} alt="" width="100" />
-                        {/* <div className="image-item__btn-wrapper">
-                          <button onClick={() => onImageUpdate(index)}>
-                            Update
-                          </button>
-                          <button onClick={() => onImageRemove(index)}>
-                            Remove
-                          </button>
-                        </div> */}
+                        <img src={image.dataURL} alt="photo" width="100" />
                       </div>
                     ))}
                   </div>
