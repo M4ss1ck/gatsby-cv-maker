@@ -1,10 +1,12 @@
 import * as React from "react"
 import { Trans } from "gatsby-plugin-react-i18next"
 import Pdf from "react-to-pdf"
+import { ImageListType } from "react-images-uploading"
 import { useElementSize, useWindowSize } from "usehooks-ts"
 
 interface CVData {
   cvdata: {
+    photo: ImageListType
     name: string
     position: string
     address: string
@@ -41,6 +43,9 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
           ref={articleRef}
         >
           <section className="text-center text-white break-all bg-blue-800 md:text-left">
+            {cvdata.photo[0] && (
+              <img src={cvdata.photo[0].dataURL} alt="photo" className="p-2" />
+            )}
             <h1 className="p-2 text-2xl font-extrabold break-normal break-words md:text-4xl">
               {cvdata.name}
             </h1>

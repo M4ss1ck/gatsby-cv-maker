@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from "react"
 import { graphql } from "gatsby"
 import { useTranslation, useI18next, Trans } from "gatsby-plugin-react-i18next"
+import ImageUploading, { ImageListType } from "react-images-uploading"
 import Card from "../components/Card"
 import CuVi from "../components/CV"
 import Footer from "../components/Footer"
@@ -13,6 +14,7 @@ const Home = () => {
   const { language } = useI18next()
 
   interface CVData {
+    photo: ImageListType
     name: string
     position: string
     address: string
@@ -32,6 +34,7 @@ const Home = () => {
     excerpt: string
   }
   const emptycvdata: CVData = {
+    photo: [],
     name: "",
     position: "",
     address: "",
@@ -61,6 +64,13 @@ const Home = () => {
   React.useEffect(() => {
     localStorage.setItem("cvdata", JSON.stringify(cvdata))
   }, [cvdata])
+
+  const onChange = (imageList: ImageListType) => {
+    // data for submit
+    console.log(imageList[0])
+    console.log(cvdata)
+    setCVdata({ ...cvdata, photo: imageList })
+  }
 
   const [currentLang, setCurrentLang] = React.useState("")
   const addlanguage = () => {
@@ -257,18 +267,18 @@ const Home = () => {
   return (
     <>
       <Seo lang={language} title={cvdata.name ? cvdata.name : t("My CV")} />
-      <main className="container mx-auto flex flex-col items-center justify-center w-full text-primario dark:text-gray-400 dark:bg-black">
-        <div className="flex flex-row items-center justify-center container">
+      <main className="container flex flex-col items-center justify-center w-full mx-auto text-primario dark:text-gray-400 dark:bg-black">
+        <div className="container flex flex-row items-center justify-center">
           <DarkToggle />
           <Language />
           <a
             href="/about"
-            className="rounded-xl px-4 mr-8 my-4 ml-auto border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700"
+            className="p-2 px-4 my-4 ml-auto mr-8 font-bold text-blue-700 border-2 border-blue-700 rounded-xl hover:text-gray-300 hover:bg-blue-700"
           >
             <Trans>About</Trans>
           </a>
         </div>
-        <h1 className="font-bold text-lg lg:text-4xl my-auto">
+        <h1 className="my-auto text-lg font-bold lg:text-4xl">
           <Trans>CV Maker</Trans>
         </h1>
         <p className="font-montserrat">
@@ -280,8 +290,56 @@ const Home = () => {
             los valores correctos
           </Trans>
         </small>
-        <div className="flex flex-col md:flex-row w-full container mx-auto items-center md:items-start justify-center">
+        <div className="container flex flex-col items-center justify-center w-full mx-auto md:flex-row md:items-start">
           <form className="flex flex-col flex-nowrap items-center justify-start w-full max-h-[90vh] overflow-y-auto md:max-w-xs scroll-smooth md:mr-8 md:scrollbar dark:md:scrollbardark">
+            <Card>
+              <label htmlFor="profileImage">
+                <Trans>Photo</Trans>
+              </label>
+              <ImageUploading value={cvdata.photo} onChange={onChange}>
+                {({
+                  imageList,
+                  onImageUpload,
+                  onImageRemoveAll,
+                  onImageUpdate,
+                  onImageRemove,
+                  isDragging,
+                  dragProps,
+                }) => (
+                  // write your building UI
+                  <div className="flex flex-col items-center w-full px-1 my-4">
+                    <button
+                      style={isDragging ? { color: "red" } : undefined}
+                      onClick={onImageUpload}
+                      className="p-4 border border-blue-700 border-dashed rounded-xl"
+                      {...dragProps}
+                    >
+                      Click or Drop here
+                    </button>
+
+                    <button
+                      onClick={onImageRemoveAll}
+                      className="p-2 px-2 my-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                    >
+                      Remove
+                    </button>
+                    {imageList.map((image, index) => (
+                      <div key={index} className="image-item">
+                        <img src={image.dataURL} alt="" width="100" />
+                        {/* <div className="image-item__btn-wrapper">
+                          <button onClick={() => onImageUpdate(index)}>
+                            Update
+                          </button>
+                          <button onClick={() => onImageRemove(index)}>
+                            Remove
+                          </button>
+                        </div> */}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </ImageUploading>
+            </Card>
             <Card>
               <label htmlFor="full-name">
                 <Trans>Nombre, cargo y resumen</Trans>
@@ -290,14 +348,14 @@ const Home = () => {
                 id="full-name"
                 type="text"
                 placeholder={t("Nombre completo")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCVdata({ ...cvdata, name: e.target.value })}
               />
               <input
                 id="position"
                 type="text"
                 placeholder={t("What are you?")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, position: e.target.value })
                 }
@@ -305,7 +363,7 @@ const Home = () => {
               <textarea
                 id="excerpt"
                 placeholder={t("Summary")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, excerpt: e.target.value })
                 }
@@ -319,7 +377,7 @@ const Home = () => {
                 id="address"
                 type="text"
                 placeholder={t("Address")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, address: e.target.value })
                 }
@@ -328,14 +386,14 @@ const Home = () => {
                 id="email"
                 type="email"
                 placeholder={t("E-mail")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCVdata({ ...cvdata, email: e.target.value })}
               />
               <input
                 id="website"
                 type="url"
                 placeholder={t("Website")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, website: e.target.value })
                 }
@@ -344,7 +402,7 @@ const Home = () => {
                 id="linkedin"
                 type="url"
                 placeholder={"LinkedIn"}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, linkedin: e.target.value })
                 }
@@ -353,7 +411,7 @@ const Home = () => {
                 id="twitter"
                 type="url"
                 placeholder={t("Twitter")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCVdata({ ...cvdata, twitter: e.target.value })
                 }
@@ -362,7 +420,7 @@ const Home = () => {
                 id="github"
                 type="url"
                 placeholder={t("Github")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCVdata({ ...cvdata, github: e.target.value })}
               />
             </Card>
@@ -374,22 +432,22 @@ const Home = () => {
                 id="skills"
                 type="text"
                 placeholder={t("Skills")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCurrentSkill(e.target.value)}
                 value={currentSkill}
               />
-              <div className="flex flex-row px-2 items-center justify-between w-full">
+              <div className="flex flex-row items-center justify-between w-full px-2">
                 <button
                   type="button"
                   onClick={addSkill}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remSkill}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -403,22 +461,22 @@ const Home = () => {
                 id="languages"
                 type="text"
                 placeholder={t("Languajes")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e => setCurrentLang(e.target.value)}
                 value={currentLang}
               />
-              <div className="flex flex-row px-2 items-center justify-between w-full">
+              <div className="flex flex-row items-center justify-between w-full px-2">
                 <button
                   type="button"
                   onClick={addlanguage}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remlanguage}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -432,7 +490,7 @@ const Home = () => {
                 id="education_date"
                 type="text"
                 placeholder={t("Date")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentEducation({
                     ...currentEducation,
@@ -444,7 +502,7 @@ const Home = () => {
               <textarea
                 id="education_title"
                 placeholder={t("Title")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentEducation({
                     ...currentEducation,
@@ -456,7 +514,7 @@ const Home = () => {
               <textarea
                 id="education_small"
                 placeholder={t("Place")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentEducation({
                     ...currentEducation,
@@ -465,18 +523,18 @@ const Home = () => {
                 }
                 value={currentEducation.small}
               />
-              <div className="flex flex-row px-2 items-center justify-between w-full">
+              <div className="flex flex-row items-center justify-between w-full px-2">
                 <button
                   type="button"
                   onClick={addEducation}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remEducation}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -490,7 +548,7 @@ const Home = () => {
                 id="work_date"
                 type="text"
                 placeholder={t("Date")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentWork({
                     ...currentWork,
@@ -502,7 +560,7 @@ const Home = () => {
               <textarea
                 id="work_title"
                 placeholder={t("Position")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentWork({
                     ...currentWork,
@@ -514,7 +572,7 @@ const Home = () => {
               <textarea
                 id="work_small"
                 placeholder={t("Place")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentWork({
                     ...currentWork,
@@ -526,7 +584,7 @@ const Home = () => {
               <textarea
                 id="work_info"
                 placeholder={t("More info")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 rows={5}
                 onChange={e =>
                   setCurrentWork({
@@ -536,18 +594,18 @@ const Home = () => {
                 }
                 value={currentWork.info}
               />
-              <div className="flex flex-row px-2 items-center justify-between w-full">
+              <div className="flex flex-row items-center justify-between w-full px-2">
                 <button
                   type="button"
                   onClick={addWork}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remWork}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -561,7 +619,7 @@ const Home = () => {
                 id="projects_date"
                 type="text"
                 placeholder={t("Date")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -574,7 +632,7 @@ const Home = () => {
                 id="projects_title"
                 type="text"
                 placeholder={t("Position")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -587,7 +645,7 @@ const Home = () => {
                 id="projects_url"
                 type="text"
                 placeholder={t("Place")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -599,7 +657,7 @@ const Home = () => {
               <textarea
                 id="projects_info"
                 placeholder={t("More info")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 rows={5}
                 onChange={e =>
                   setCurrentProject({
@@ -609,18 +667,18 @@ const Home = () => {
                 }
                 value={currentProject.info}
               />
-              <div className="flex flex-row px-2 items-center justify-between w-full">
+              <div className="flex flex-row items-center justify-between w-full px-2">
                 <button
                   type="button"
                   onClick={addProject}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remProject}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -634,7 +692,7 @@ const Home = () => {
                 id="award_date"
                 type="text"
                 placeholder={t("Date")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentAward({
                     ...currentAward,
@@ -646,7 +704,7 @@ const Home = () => {
               <textarea
                 id="award_title"
                 placeholder={t("Title")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentAward({
                     ...currentAward,
@@ -658,7 +716,7 @@ const Home = () => {
               <textarea
                 id="award_small"
                 placeholder={t("Place")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentAward({
                     ...currentAward,
@@ -667,18 +725,18 @@ const Home = () => {
                 }
                 value={currentAward.small}
               />
-              <div className="flex flex-row px-2 items-center justify-between w-full">
+              <div className="flex flex-row items-center justify-between w-full px-2">
                 <button
                   type="button"
                   onClick={addAward}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remAward}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -692,7 +750,7 @@ const Home = () => {
                 id="publication_date"
                 type="text"
                 placeholder={t("Date")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentPublication({
                     ...currentPublication,
@@ -704,7 +762,7 @@ const Home = () => {
               <textarea
                 id="publication_title"
                 placeholder={t("Title")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentPublication({
                     ...currentPublication,
@@ -716,7 +774,7 @@ const Home = () => {
               <textarea
                 id="publication_small"
                 placeholder={t("Place")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentPublication({
                     ...currentPublication,
@@ -725,18 +783,18 @@ const Home = () => {
                 }
                 value={currentPublication.small}
               />
-              <div className="flex flex-row px-2 items-center justify-between w-full">
+              <div className="flex flex-row items-center justify-between w-full px-2">
                 <button
                   type="button"
                   onClick={addPublication}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remPublication}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -750,7 +808,7 @@ const Home = () => {
                 id="interest_date"
                 type="text"
                 placeholder={t("Date")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentInterest({
                     ...currentInterest,
@@ -762,7 +820,7 @@ const Home = () => {
               <textarea
                 id="interest_title"
                 placeholder={t("Title")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentInterest({
                     ...currentInterest,
@@ -774,7 +832,7 @@ const Home = () => {
               <textarea
                 id="interest_small"
                 placeholder={t("Place")}
-                className="my-4 px-1 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
                 onChange={e =>
                   setCurrentInterest({
                     ...currentInterest,
@@ -783,18 +841,18 @@ const Home = () => {
                 }
                 value={currentInterest.small}
               />
-              <div className="flex flex-row px-2 items-center justify-between w-full">
+              <div className="flex flex-row items-center justify-between w-full px-2">
                 <button
                   type="button"
                   onClick={addInterest}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remInterest}
-                  className="border-2 border-blue-700 text-blue-700 font-bold p-2 hover:text-gray-300 hover:bg-blue-700 rounded-lg px-2 mb-2"
+                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -802,7 +860,7 @@ const Home = () => {
             </Card>
 
             {/* <button
-              className="border border-primario px-4 rounded-xl"
+              className="px-4 border border-primario rounded-xl"
               type="submit"
             >
               Agregar
