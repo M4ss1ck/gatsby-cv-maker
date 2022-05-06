@@ -268,8 +268,8 @@ const Home = () => {
     <>
       <Seo lang={language} title={cvdata.name ? cvdata.name : t("My CV")} />
       <main className="container flex flex-col items-center justify-center w-full mx-auto text-primario dark:text-gray-400 dark:bg-black">
-        <div className="container flex flex-row items-center justify-center">
-          <DarkToggle />
+        <div className="flex flex-row items-center justify-center w-full">
+          <DarkToggle css="relative mr-auto ml-8" />
           <Language />
           <a
             href="/about"

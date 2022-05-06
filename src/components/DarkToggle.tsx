@@ -6,19 +6,19 @@ interface Props {
   toggleTheme: (theme: string) => void
 }
 
-const darkToggle = () => {
+const darkToggle: React.FC<{ css: string }> = ({ css }) => {
   return (
     <ThemeToggler>
-      {({ theme, toggleTheme }:Props) => (
-        <div className="relative m-auto">
+      {({ theme, toggleTheme }: Props) => (
+        <div className={css}>
           <input
             type="checkbox"
             id="toggle"
             onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
             checked={theme === "dark"}
-            className="peer appearance-none cursor-pointer border border-blue-500 rounded-full checked:border-blue-500 w-12 h-7"
+            className="w-12 border border-blue-500 rounded-full appearance-none cursor-pointer peer checked:border-blue-500 h-7"
           />
-          <span className="peer-checked:left-6 peer-checked:bg-blue-500 transition-all duration-500 pointer-events-none w-5 h-5 block absolute top-1 left-1 rounded-full bg-blue-500"></span>
+          <span className="absolute block w-5 h-5 transition-all duration-500 bg-blue-500 rounded-full pointer-events-none peer-checked:left-6 peer-checked:bg-blue-500 top-1 left-1"></span>
           {/* <label htmlFor="toggle"></label> */}
         </div>
       )}
