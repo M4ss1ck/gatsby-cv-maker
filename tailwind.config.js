@@ -14,16 +14,47 @@ module.exports = {
     fontFamily: {
       montserrat: ["Montserrat, sans-serif"],
     },
-    extend: {
-      maxWidth: {
-        pantalla: "100vw",
-      },
-      colors: {
-        primario: "#173955",
-        secundario: "#049e2a",
-        terciario: "#a72772",
-      },
-    },
+    // extend: {
+    //   maxWidth: {
+    //     pantalla: "100vw",
+    //   },
+    //   colors: {
+    //     primario: "#1D4ED8",
+    //     secundario: "#049e2a",
+    //     terciario: "#a72772",
+    //   },
+    // },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-themer")({
+      defaultTheme: {
+        extend: {
+          colors: {
+            primario: "#1D4ED8",
+            fondo: "#049e2a",
+          },
+        },
+      },
+      themes: [
+        {
+          name: "dark",
+          extend: {
+            colors: {
+              primario: "#9CA3AF",
+              fondo: "#000000",
+            },
+          },
+        },
+        {
+          name: "pink",
+          extend: {
+            colors: {
+              primario: "#a72772",
+              fondo: "#049e2a",
+            },
+          },
+        },
+      ],
+    }),
+  ],
 }
