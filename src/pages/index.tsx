@@ -267,13 +267,13 @@ const Home = () => {
   return (
     <>
       <Seo lang={language} title={cvdata.name ? cvdata.name : t("My CV")} />
-      <main className="container flex flex-col items-center justify-center w-full mx-auto text-primario dark:text-gray-400 dark:bg-black">
+      <main className="container flex flex-col items-center justify-center w-full mx-auto text-primario bg-fondo">
         <div className="flex flex-row items-center justify-center w-full">
-          <DarkToggle css="relative mr-auto ml-8" />
+          <DarkToggle />
           <Language />
           <a
             href="/about"
-            className="p-2 px-4 my-4 ml-auto mr-8 font-bold text-blue-700 border-2 border-blue-700 rounded-xl hover:text-gray-300 hover:bg-blue-700"
+            className="p-2 px-4 my-4 ml-auto mr-8 font-bold border-2 text-primario border-primario rounded-xl hover:text-secundario hover:bg-primario"
           >
             <Trans>About</Trans>
           </a>
@@ -310,7 +310,7 @@ const Home = () => {
                     <button
                       style={isDragging ? { color: "red" } : undefined}
                       onClick={onImageUpload}
-                      className="p-4 border border-blue-700 border-dashed rounded-xl"
+                      className="p-4 border border-dashed border-primario rounded-xl"
                       {...dragProps}
                     >
                       <Trans>Click or Drop here</Trans>
@@ -318,7 +318,7 @@ const Home = () => {
 
                     <button
                       onClick={onImageRemoveAll}
-                      className="p-2 px-2 my-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                      className="p-2 px-2 my-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                     >
                       <Trans>Remove</Trans>
                     </button>
@@ -445,14 +445,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addSkill}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remSkill}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -474,14 +474,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addlanguage}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remlanguage}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -532,14 +532,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addEducation}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remEducation}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -603,14 +603,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addWork}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remWork}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -676,14 +676,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addProject}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remProject}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -734,14 +734,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addAward}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remAward}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -792,14 +792,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addPublication}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remPublication}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -850,14 +850,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addInterest}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remInterest}
-                  className="p-2 px-2 mb-2 font-bold text-blue-700 border-2 border-blue-700 rounded-lg hover:text-gray-300 hover:bg-blue-700"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
                 >
                   <Trans>Remove</Trans>
                 </button>

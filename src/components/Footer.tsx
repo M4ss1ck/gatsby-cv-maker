@@ -3,7 +3,7 @@ import { Trans } from "gatsby-plugin-react-i18next"
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-blue-800 via-black to-blue-800 dark:from-black dark:via-gray-900 dark:to-black text-gray-400 w-full text-center">
+    <footer className="w-full text-center bg-gradient-to-r from-primario via-black to-primario text-secundario">
       <Trans>Hecho con</Trans> <span className="text-blue-700">💙</span>{" "}
       <Trans>usando Gatsby, Tailwind CSS y Netlify</Trans>{" "}
       <a

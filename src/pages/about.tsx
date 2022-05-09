@@ -13,7 +13,7 @@ export default function About() {
     <>
       <Seo lang={language} title={t("about")} />
       <main className="container flex flex-col items-center justify-center w-full h-screen mx-auto lg:text-2xl text-primario dark:text-gray-400 dark:bg-black font-montserrat">
-        <DarkToggle css="relative m-auto" />
+        <DarkToggle />
         <Language />
         <h1 className="my-auto text-lg font-bold lg:text-6xl">
           <Trans>Bienvenido</Trans>
