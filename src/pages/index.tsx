@@ -273,7 +273,7 @@ const Home = () => {
           <Language />
           <a
             href="/about"
-            className="p-2 px-4 my-4 ml-auto mr-8 font-bold border-2 text-primario border-primario rounded-xl hover:text-secundario hover:bg-primario"
+            className="p-2 px-4 m-auto my-4 font-bold border-2 text-primario border-primario rounded-xl hover:text-secundario hover:bg-primario"
           >
             <Trans>About</Trans>
           </a>
