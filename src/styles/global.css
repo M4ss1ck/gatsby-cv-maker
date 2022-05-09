@@ -8,54 +8,29 @@
 @tailwind utilities;
 
 @layer utilities {
-     /* Scroll thumb styles */
-     .scrollbar::-webkit-scrollbar {
-        width: .5rem;
-      }
-      .scrollbar::-webkit-scrollbar-thumb {
-        background: #27272E; 
-        border-radius: 1rem;
-      }
-      .scrollbar::-webkit-scrollbar-thumb:active {
-        background-color: #131314;
-      }
-      .scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #1e40af; 
-        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-      }
-  
-      /* Scroll track styles (Background) */
-      .scrollbar::-webkit-scrollbar-track {
-        background: white;
-        border-radius: 4px;
-      }
-      .scrollbar::-webkit-scrollbar-track:hover, 
-      .scrollbar::-webkit-scrollbar-track:active {
-        background: #e8f0fe;
-      }
-      /*dark mode*/
-      .scrollbardark::-webkit-scrollbar {
-        width: .5rem;
-      }
-      .scrollbardark::-webkit-scrollbar-thumb {
-        background: #3B3B46; 
-        border-radius: 1rem;
-      }
-      .scrollbardark::-webkit-scrollbar-thumb:active {
-        background-color: #131314;
-      }
-      .scrollbardark::-webkit-scrollbar-thumb:hover {
-        background: #1e40af; 
-        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-      }
-  
-      /* Scroll track styles (Background) */
-      .scrollbardark::-webkit-scrollbar-track {
-        background: #131314;
-        border-radius: 4px;
-      }
-      .scrollbardark::-webkit-scrollbar-track:hover, 
-      .scrollbardark::-webkit-scrollbar-track:active {
-        background: #131314;
-      }
+  /* Scroll thumb styles */
+  .scrollbar::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #27272e;
+    border-radius: 1rem;
+  }
+  .scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: #131314;
+  }
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--colors-primario), var(--tw-text-opacity));
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Scroll track styles (Background) */
+  .scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+  .scrollbar::-webkit-scrollbar-track:hover,
+  .scrollbar::-webkit-scrollbar-track:active {
+    background: transparent;
+  }
 }
