@@ -291,7 +291,7 @@ const Home = () => {
           </Trans>
         </small>
         <div className="container flex flex-col items-center justify-center w-full mx-auto md:flex-row md:items-start">
-          <form className="flex flex-col flex-nowrap items-center justify-start w-full max-h-[90vh] overflow-y-auto md:max-w-xs scroll-smooth md:mr-8 md:scrollbar dark:md:scrollbardark">
+          <form className="flex flex-col flex-nowrap items-center justify-start w-full max-h-[90vh] overflow-y-auto md:max-w-xs scroll-smooth md:mr-8 md:scrollbar">
             <Card>
               <label htmlFor="profileImage">
                 <Trans>Photo</Trans>
