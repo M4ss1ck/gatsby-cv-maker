@@ -30,6 +30,7 @@ specifiers:
   react-images-uploading: ^3.1.6
   react-to-pdf: ^0.0.14
   tailwindcss: ^3.0.23
+  tailwindcss-themer: ^1.1.0
   typescript: ^4.6.2
   usehooks-ts: ^2.4.2
 
@@ -66,6 +67,7 @@ devDependencies:
   postcss: 8.4.7
   prettier: 2.5.1
   tailwindcss: 3.0.23_autoprefixer@10.4.2
+  tailwindcss-themer: 1.1.0_tailwindcss@3.0.23
   typescript: 4.6.2
 
 packages:
@@ -3737,8 +3739,6 @@ packages:
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
-    dev: false
-    optional: true
 
   /color/4.2.1:
     resolution: {integrity: sha512-MFJr0uY4RvTQUKvPq7dh9grVOTYSFeXja2mBXioCGjnjJoXrAp9jJ1NQTDR73c9nwBSAQiNKloKl5zq9WB9UPw==}
@@ -3746,8 +3746,6 @@ packages:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.0
-    dev: false
-    optional: true
 
   /colord/2.9.2:
     resolution: {integrity: sha512-Uqbg+J445nc1TKn4FoDPS6ZZqAvEDnwrH42yo8B40JSOgSLxMZ/gt3h4nmCtPLQeXhjJJkqBx7SCY35WnIixaQ==}
@@ -6673,8 +6671,6 @@ packages:
 
   /is-arrayish/0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
-    dev: false
-    optional: true
 
   /is-bigint/1.0.4:
     resolution: {integrity: sha512-zB9CruMamjym81i2JZ3UMn54PKGsQzsJeo6xvN3HJJ4CAsQNB6iRutp2To77OfCNuoxspsIhzaPoO1zyCEhFOg==}
@@ -7163,6 +7159,10 @@ packages:
       object.assign: 4.1.2
     dev: false
 
+  /just-unique/4.0.1:
+    resolution: {integrity: sha512-rUeSLN44eynoLqpWa/J73f4fGEGoUxBw+3KPCABN2CkCQuP/7WYS6BSQ8/YIIB5wAEdzfHeJhYPfoYIi95UywA==}
+    dev: true
+
   /kebab-hash/0.1.2:
     resolution: {integrity: sha512-BTZpq3xgISmQmAVzkISy4eUutsUA7s4IEFlCwOBJjvSFOwyR7I+fza+tBc/rzYWK/NrmFHjfU1IhO3lu29Ib/w==}
     dependencies:
@@ -7394,7 +7394,10 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: false
+
+  /lodash.mergewith/4.6.2:
+    resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
+    dev: true
 
   /lodash.truncate/4.4.2:
     resolution: {integrity: sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=}
@@ -9628,8 +9631,6 @@ packages:
     resolution: {integrity: sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=}
     dependencies:
       is-arrayish: 0.3.2
-    dev: false
-    optional: true
 
   /sisteransi/1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
@@ -10112,6 +10113,18 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
     dev: false
+
+  /tailwindcss-themer/1.1.0_tailwindcss@3.0.23:
+    resolution: {integrity: sha512-vXt4BuJ9y7fZizjg4+cHnK2vjZJZhTypU54mxUk99xtEtQf79o5WWCh9l9yd5BVHGyYjhfpnoI2iwzHLNgmiag==}
+    peerDependencies:
+      tailwindcss: ^3.0.12
+    dependencies:
+      color: 4.2.1
+      just-unique: 4.0.1
+      lodash.merge: 4.6.2
+      lodash.mergewith: 4.6.2
+      tailwindcss: 3.0.23_autoprefixer@10.4.2
+    dev: true
 
   /tailwindcss/3.0.23_autoprefixer@10.4.2:
     resolution: {integrity: sha512-+OZOV9ubyQ6oI2BXEhzw4HrqvgcARY38xv3zKcjnWtMIZstEsXdI9xftd1iB7+RbOnj2HOEzkA0OyB5BaSxPQA==}
