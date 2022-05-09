@@ -1,3 +1,4 @@
+//@ts-check
 module.exports = {
   //important: true,
   darkMode: "class",
@@ -41,7 +42,6 @@ module.exports = {
               h3: { color: theme("colors.gray.500") },
               h4: { color: theme("colors.gray.500") },
               th: { color: theme("colors.gray.600") },
-              code: { color: theme("colors.gray.500") },
               "a code": { color: theme("colors.gray.500") },
               pre: {
                 color: theme("colors.gray.400"),

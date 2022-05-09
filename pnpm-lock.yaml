@@ -10,6 +10,7 @@ specifiers:
   '@types/react': ^17.0.39
   '@types/react-dom': ^17.0.13
   '@types/react-helmet': ^6.1.5
+  '@types/tailwindcss': ^3.0.10
   autoprefixer: ^10.4.2
   babel-plugin-i18next-extract: ^0.8.3
   gatsby: ^4.9.1
@@ -61,6 +62,7 @@ devDependencies:
   '@types/node': 17.0.21
   '@types/react': 17.0.39
   '@types/react-dom': 17.0.13
+  '@types/tailwindcss': 3.0.10
   autoprefixer: 10.4.2_postcss@8.4.7
   babel-plugin-i18next-extract: 0.8.3
   gatsby-plugin-postcss: 5.9.0_gatsby@4.9.1+postcss@8.4.7
@@ -2531,6 +2533,10 @@ packages:
       '@types/node': 17.0.21
     dev: false
     optional: true
+
+  /@types/tailwindcss/3.0.10:
+    resolution: {integrity: sha512-1UnZIHO0NOPyPlPFV0HuMjki2SHkvG9uBA1ZehWj/OQMSROk503nuNyyfmJSIT289yewxTbKoPG+KLxYRvfIIg==}
+    dev: true
 
   /@types/tmp/0.0.33:
     resolution: {integrity: sha1-EHPEvIJHVK49EM+riKsCN7qWTk0=}
