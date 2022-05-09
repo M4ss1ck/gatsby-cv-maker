@@ -13,11 +13,11 @@
     width: 0.5rem;
   }
   .scrollbar::-webkit-scrollbar-thumb {
-    background: #27272e;
+    background: rgba(var(--colors-secundario), var(--tw-text-opacity));
     border-radius: 1rem;
   }
   .scrollbar::-webkit-scrollbar-thumb:active {
-    background-color: #131314;
+    background-color: rgba(var(--colors-primario), var(--tw-text-opacity));
   }
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(var(--colors-primario), var(--tw-text-opacity));
