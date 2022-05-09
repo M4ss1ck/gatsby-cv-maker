@@ -18,13 +18,13 @@ export default function About() {
         <h1 className="my-auto text-lg font-bold lg:text-6xl">
           <Trans>Bienvenido</Trans>
         </h1>
-        <p className="">
+        <p className="text-center">
           <Trans>
             Aquí puedes crear un maravilloso CV que te ayudará a conseguir tu
             próximo empleo
           </Trans>
         </p>
-        <p>
+        <p className="text-center">
           <Trans>Sólo rellena el formulario y exporta el resultado.</Trans>
         </p>
         <button className="p-4 px-4 my-12 font-bold text-blue-700 border-2 border-blue-700 hover:text-gray-300 hover:bg-blue-700 rounded-xl">
