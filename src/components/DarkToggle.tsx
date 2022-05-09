@@ -1,5 +1,4 @@
 import React from "react"
-import Select, { SingleValue, ActionMeta } from "react-select"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
 import { useTranslation } from "gatsby-plugin-react-i18next"
 
