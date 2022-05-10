@@ -55,7 +55,7 @@ const darkToggle: React.FC = () => {
                   leaveFrom="transform scale-100 opacity-100"
                   leaveTo="transform scale-95 opacity-0"
                 >
-                  <Listbox.Options className="absolute py-1 mt-1 overflow-auto text-base rounded-md shadow-lg bg-fondo shadow-primario max-h-60 ring-1 ring-primario ring-opacity-5 focus:outline-none sm:text-sm">
+                  <Listbox.Options className="absolute flex flex-col items-center justify-end py-1 mt-1 overflow-auto text-base rounded-md shadow-lg bg-fondo shadow-primario max-h-60 ring-1 ring-primario ring-opacity-5 focus:outline-none sm:text-sm w-max">
                     {themes.map(currentTheme => (
                       <Listbox.Option
                         key={currentTheme.value}
@@ -65,16 +65,14 @@ const darkToggle: React.FC = () => {
                       >
                         {({ active, selected }) => (
                           <li
-                            className={`relative cursor-default select-none py-2 pl-10 pr-4 ${
-                              active
-                                ? "flex flex-row items-center justify-end bg-primario text-fondo"
-                                : "flex flex-row items-center justify-end"
+                            className={`relative cursor-default flex-nowrap w-full select-none py-2 px-2 flex flex-row items-center justify-end ${
+                              active ? "bg-primario text-fondo" : ""
                             }`}
                           >
                             {selected && (
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="w-6 h-6"
+                                className="inline-flex w-6 h-6"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
