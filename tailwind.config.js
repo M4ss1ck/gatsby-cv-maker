@@ -47,6 +47,16 @@ module.exports = {
             },
           },
         },
+        {
+          name: "classic",
+          extend: {
+            colors: {
+              primario: "black",
+              fondo: "white",
+              secundario: "gray.400",
+            },
+          },
+        },
       ],
     }),
   ],
