@@ -5,6 +5,7 @@ specifiers:
   '@babel/core': ^7.17.5
   '@babel/plugin-transform-typescript': ^7.16.8
   '@fontsource/montserrat': ^4.5.5
+  '@headlessui/react': ^1.6.1
   '@tailwindcss/typography': ^0.5.2
   '@types/node': ^17.0.21
   '@types/react': ^17.0.39
@@ -38,6 +39,7 @@ specifiers:
 dependencies:
   '@babel/core': 7.17.5
   '@fontsource/montserrat': 4.5.5
+  '@headlessui/react': 1.6.1_react-dom@17.0.2+react@17.0.2
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.23
   '@types/react-helmet': 6.1.5
   gatsby: 4.9.1_095c0c736f5a5df46e8ec3092d52175a
@@ -1613,6 +1615,17 @@ packages:
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
     dependencies:
       '@hapi/hoek': 9.2.1
+    dev: false
+
+  /@headlessui/react/1.6.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-gMd6uIs1U4Oz718Z5gFoV0o/vD43/4zvbyiJN9Dt7PK9Ubxn+TmJwTmYwyNJc5KxxU1t0CmgTNgwZX9+4NjCnQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /@humanwhocodes/config-array/0.5.0:
