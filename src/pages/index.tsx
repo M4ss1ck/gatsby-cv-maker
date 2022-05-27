@@ -267,13 +267,13 @@ const Home = () => {
   return (
     <>
       <Seo lang={language} title={cvdata.name ? cvdata.name : t("My CV")} />
-      <main className="container flex flex-col items-center justify-center w-full mx-auto text-primario bg-fondo">
+      <main className="container flex flex-col items-center justify-center w-full mx-auto">
         <div className="flex flex-row items-center justify-center w-full">
           <Themes />
           <Language />
           <a
             href="/about"
-            className="p-2 px-4 m-auto my-4 font-bold border-2 text-primario border-primario rounded-xl hover:text-secundario hover:bg-primario"
+            className="p-2 px-4 m-auto my-4 font-bold border-2 text-primary border-primary rounded-xl hover:text-secundario hover:bg-primary"
           >
             <Trans>About</Trans>
           </a>
@@ -310,7 +310,7 @@ const Home = () => {
                     <button
                       style={isDragging ? { color: "red" } : undefined}
                       onClick={onImageUpload}
-                      className="p-4 border border-dashed border-primario rounded-xl"
+                      className="p-4 border border-dashed border-primary rounded-xl"
                       {...dragProps}
                     >
                       <Trans>Click or Drop here</Trans>
@@ -318,7 +318,7 @@ const Home = () => {
 
                     <button
                       onClick={onImageRemoveAll}
-                      className="p-2 px-2 my-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                      className="p-2 px-2 my-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                     >
                       <Trans>Remove</Trans>
                     </button>
@@ -330,12 +330,12 @@ const Home = () => {
                     {errors && (
                       <div>
                         {errors.acceptType && (
-                          <span className="text-red-500">
+                          <span className="text-error">
                             <Trans>File not supported</Trans>
                           </span>
                         )}
                         {errors.maxFileSize && (
-                          <span className="text-red-500">
+                          <span className="text-error">
                             <Trans>File too big</Trans>
                           </span>
                         )}
@@ -353,14 +353,14 @@ const Home = () => {
                 id="full-name"
                 type="text"
                 placeholder={t("Nombre completo")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e => setCVdata({ ...cvdata, name: e.target.value })}
               />
               <input
                 id="position"
                 type="text"
                 placeholder={t("What are you?")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCVdata({ ...cvdata, position: e.target.value })
                 }
@@ -368,7 +368,7 @@ const Home = () => {
               <textarea
                 id="excerpt"
                 placeholder={t("Summary")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCVdata({ ...cvdata, excerpt: e.target.value })
                 }
@@ -382,7 +382,7 @@ const Home = () => {
                 id="address"
                 type="text"
                 placeholder={t("Address")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCVdata({ ...cvdata, address: e.target.value })
                 }
@@ -391,14 +391,14 @@ const Home = () => {
                 id="email"
                 type="email"
                 placeholder={t("E-mail")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e => setCVdata({ ...cvdata, email: e.target.value })}
               />
               <input
                 id="website"
                 type="url"
                 placeholder={t("Website")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCVdata({ ...cvdata, website: e.target.value })
                 }
@@ -407,7 +407,7 @@ const Home = () => {
                 id="linkedin"
                 type="url"
                 placeholder={"LinkedIn"}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCVdata({ ...cvdata, linkedin: e.target.value })
                 }
@@ -416,7 +416,7 @@ const Home = () => {
                 id="twitter"
                 type="url"
                 placeholder={t("Twitter")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCVdata({ ...cvdata, twitter: e.target.value })
                 }
@@ -425,7 +425,7 @@ const Home = () => {
                 id="github"
                 type="url"
                 placeholder={t("Github")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e => setCVdata({ ...cvdata, github: e.target.value })}
               />
             </Card>
@@ -437,7 +437,7 @@ const Home = () => {
                 id="skills"
                 type="text"
                 placeholder={t("Skills")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e => setCurrentSkill(e.target.value)}
                 value={currentSkill}
               />
@@ -445,14 +445,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addSkill}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remSkill}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -466,7 +466,7 @@ const Home = () => {
                 id="languages"
                 type="text"
                 placeholder={t("Languajes")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e => setCurrentLang(e.target.value)}
                 value={currentLang}
               />
@@ -474,14 +474,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addlanguage}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remlanguage}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -495,7 +495,7 @@ const Home = () => {
                 id="education_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentEducation({
                     ...currentEducation,
@@ -507,7 +507,7 @@ const Home = () => {
               <textarea
                 id="education_title"
                 placeholder={t("Title")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentEducation({
                     ...currentEducation,
@@ -519,7 +519,7 @@ const Home = () => {
               <textarea
                 id="education_small"
                 placeholder={t("Place")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentEducation({
                     ...currentEducation,
@@ -532,14 +532,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addEducation}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remEducation}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -553,7 +553,7 @@ const Home = () => {
                 id="work_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentWork({
                     ...currentWork,
@@ -565,7 +565,7 @@ const Home = () => {
               <textarea
                 id="work_title"
                 placeholder={t("Position")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentWork({
                     ...currentWork,
@@ -577,7 +577,7 @@ const Home = () => {
               <textarea
                 id="work_small"
                 placeholder={t("Place")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentWork({
                     ...currentWork,
@@ -589,7 +589,7 @@ const Home = () => {
               <textarea
                 id="work_info"
                 placeholder={t("More info")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 rows={5}
                 onChange={e =>
                   setCurrentWork({
@@ -603,14 +603,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addWork}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remWork}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -624,7 +624,7 @@ const Home = () => {
                 id="projects_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -637,7 +637,7 @@ const Home = () => {
                 id="projects_title"
                 type="text"
                 placeholder={t("Position")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -650,7 +650,7 @@ const Home = () => {
                 id="projects_url"
                 type="text"
                 placeholder={t("Place")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -662,7 +662,7 @@ const Home = () => {
               <textarea
                 id="projects_info"
                 placeholder={t("More info")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 rows={5}
                 onChange={e =>
                   setCurrentProject({
@@ -676,14 +676,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addProject}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remProject}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -697,7 +697,7 @@ const Home = () => {
                 id="award_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentAward({
                     ...currentAward,
@@ -709,7 +709,7 @@ const Home = () => {
               <textarea
                 id="award_title"
                 placeholder={t("Title")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentAward({
                     ...currentAward,
@@ -721,7 +721,7 @@ const Home = () => {
               <textarea
                 id="award_small"
                 placeholder={t("Place")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentAward({
                     ...currentAward,
@@ -734,14 +734,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addAward}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remAward}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -755,7 +755,7 @@ const Home = () => {
                 id="publication_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentPublication({
                     ...currentPublication,
@@ -767,7 +767,7 @@ const Home = () => {
               <textarea
                 id="publication_title"
                 placeholder={t("Title")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentPublication({
                     ...currentPublication,
@@ -779,7 +779,7 @@ const Home = () => {
               <textarea
                 id="publication_small"
                 placeholder={t("Place")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentPublication({
                     ...currentPublication,
@@ -792,14 +792,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addPublication}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remPublication}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -813,7 +813,7 @@ const Home = () => {
                 id="interest_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentInterest({
                     ...currentInterest,
@@ -825,7 +825,7 @@ const Home = () => {
               <textarea
                 id="interest_title"
                 placeholder={t("Title")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentInterest({
                     ...currentInterest,
@@ -837,7 +837,7 @@ const Home = () => {
               <textarea
                 id="interest_small"
                 placeholder={t("Place")}
-                className="px-1 my-4 dark:bg-gray-800 dark:focus:bg-gray-900 dark:text-white "
+                className="px-1 my-4"
                 onChange={e =>
                   setCurrentInterest({
                     ...currentInterest,
@@ -850,14 +850,14 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={addInterest}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Add</Trans>
                 </button>
                 <button
                   type="button"
                   onClick={remInterest}
-                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primario border-primario hover:text-gray-300 hover:bg-primario"
+                  className="p-2 px-2 mb-2 font-bold border-2 rounded-lg text-primary border-primary hover:text-gray-300 hover:bg-primary"
                 >
                   <Trans>Remove</Trans>
                 </button>
@@ -865,7 +865,7 @@ const Home = () => {
             </Card>
 
             {/* <button
-              className="px-4 border border-primario rounded-xl"
+              className="px-4 border border-primary rounded-xl"
               type="submit"
             >
               Agregar
