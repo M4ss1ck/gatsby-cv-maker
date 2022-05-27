@@ -42,7 +42,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
           className="container grid max-w-screen-lg grid-cols-1 mx-auto sm:grid-cols-3 font-montserrat"
           ref={articleRef}
         >
-          <section className="text-center text-white break-all bg-primario md:text-left">
+          <section className="text-center text-white break-all bg-primary md:text-left">
             {cvdata.photo[0] && (
               <img src={cvdata.photo[0].dataURL} alt="photo" className="p-2" />
             )}
@@ -56,7 +56,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
               cvdata.linkedin ||
               cvdata.twitter ||
               cvdata.github) && (
-              <h1 className="flex justify-center px-2 mt-4 text-lg font-bold bg-primario">
+              <h1 className="flex justify-center px-2 mt-4 text-lg font-bold bg-primary">
                 <Trans>Contact</Trans>
               </h1>
             )}
@@ -117,7 +117,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
               </a>
             )}
             {cvdata.skills?.length > 0 && (
-              <h1 className="flex justify-center px-2 mt-4 text-lg font-bold bg-primario">
+              <h1 className="flex justify-center px-2 mt-4 text-lg font-bold bg-primary">
                 <Trans>Skills</Trans>
               </h1>
             )}
@@ -129,7 +129,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
               </ul>
             )}
             {cvdata.languages?.length > 0 && (
-              <h1 className="flex justify-center px-2 text-lg font-bold bg-primario">
+              <h1 className="flex justify-center px-2 text-lg font-bold bg-primary">
                 <Trans>Languages</Trans>
               </h1>
             )}
@@ -153,7 +153,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
             {cvdata.awards?.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-lg font-bold text-primario">
+                <h1 className="py-4 text-lg font-bold text-primary">
                   <Trans>Awards</Trans>
                 </h1>
                 <hr />
@@ -175,7 +175,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
             {cvdata.publications?.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-lg font-bold text-primario">
+                <h1 className="py-4 text-lg font-bold text-primary">
                   <Trans>Publications</Trans>
                 </h1>
                 <hr />
@@ -196,7 +196,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
 
             {cvdata.projects?.length > 0 && (
               <>
-                <h1 className="py-4 text-lg font-bold text-primario">
+                <h1 className="py-4 text-lg font-bold text-primary">
                   <Trans>Projects</Trans>
                 </h1>
                 <hr />
@@ -209,7 +209,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
                     <div className="col-span-5">
                       <h2 className="text-lg font-bold">{p.title}</h2>
                       <small>
-                        <a href={p.url} className="font-thin text-primario">
+                        <a href={p.url} className="font-thin text-primary">
                           {p.url}
                         </a>
                       </small>
@@ -223,7 +223,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
 
             {cvdata.work?.length > 0 && (
               <>
-                <h1 className="py-4 text-lg font-bold text-primario">
+                <h1 className="py-4 text-lg font-bold text-primary">
                   <Trans>Work History</Trans>
                 </h1>
                 <hr />
@@ -247,7 +247,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
             {cvdata.education?.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-lg font-bold text-primario">
+                <h1 className="py-4 text-lg font-bold text-primary">
                   <Trans>Education</Trans>
                 </h1>
                 <hr />
@@ -269,7 +269,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
             {cvdata.interests?.length > 0 && (
               <>
                 <hr />
-                <h1 className="py-4 text-lg font-bold text-primario">
+                <h1 className="py-4 text-lg font-bold text-primary">
                   <Trans>Interests</Trans>
                 </h1>
                 <hr />
@@ -309,7 +309,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
           {({ toPdf }: any) => (
             <button
               onClick={toPdf}
-              className="p-4 font-bold border-2 rounded-lg text-primario border-primario hover:text-white hover:bg-primario"
+              className="p-4 font-bold border-2 rounded-lg text-primary border-primary hover:text-white hover:bg-primary"
             >
               <Trans>Export Pdf</Trans>
             </button>
