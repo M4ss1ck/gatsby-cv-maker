@@ -7,7 +7,7 @@ import CuVi from "../components/CV"
 import Footer from "../components/Footer"
 import Seo from "../components/Seo"
 import Language from "../components/Language"
-import DarkToggle from "../components/DarkToggle"
+import Themes from "../components/Themes"
 
 const Home = () => {
   const { t } = useTranslation()
@@ -269,7 +269,7 @@ const Home = () => {
       <Seo lang={language} title={cvdata.name ? cvdata.name : t("My CV")} />
       <main className="container flex flex-col items-center justify-center w-full mx-auto text-primario bg-fondo">
         <div className="flex flex-row items-center justify-center w-full">
-          <DarkToggle />
+          <Themes />
           <Language />
           <a
             href="/about"

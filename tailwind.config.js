@@ -15,49 +15,5 @@ module.exports = {
       montserrat: ["Montserrat, sans-serif"],
     },
   },
-  plugins: [
-    require("tailwindcss-themer")({
-      defaultTheme: {
-        extend: {
-          colors: {
-            primario: "#1D4ED8",
-            secundario: "rgb(209 213 219)",
-            fondo: "white",
-          },
-        },
-      },
-      themes: [
-        {
-          name: "dark",
-          extend: {
-            colors: {
-              primario: "#1D4ED8",
-              fondo: "#000000",
-              secundario: "rgb(209 213 219)",
-            },
-          },
-        },
-        {
-          name: "pink",
-          extend: {
-            colors: {
-              primario: "#a72772",
-              fondo: "white",
-              secundario: "rgb(209 213 219)",
-            },
-          },
-        },
-        {
-          name: "classic",
-          extend: {
-            colors: {
-              primario: "black",
-              fondo: "white",
-              secundario: "gray.400",
-            },
-          },
-        },
-      ],
-    }),
-  ],
+  plugins: [require("daisyui")],
 }

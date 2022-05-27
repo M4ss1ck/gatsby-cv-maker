@@ -4,7 +4,7 @@ import { useTranslation, useI18next, Trans } from "gatsby-plugin-react-i18next"
 import Footer from "../components/Footer"
 import Seo from "../components/Seo"
 import Language from "../components/Language"
-import DarkToggle from "../components/DarkToggle"
+import Themes from "../components/Themes"
 
 export default function Error404() {
   const { t } = useTranslation()
@@ -13,7 +13,7 @@ export default function Error404() {
     <>
       <Seo lang={language} title={t("Error 404")} />
       <main className="container flex flex-col items-center justify-center w-full h-screen mx-auto lg:text-2xl text-primario bg-fondo font-montserrat">
-        <DarkToggle />
+        <Themes />
         <Language />
         <h1 className="my-auto text-lg font-bold lg:text-6xl">
           <Trans>Ups</Trans>

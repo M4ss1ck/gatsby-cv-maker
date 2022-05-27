@@ -41,9 +41,5 @@
   "Photo": "Photo",
   "Click or Drop here": "Click or Drop here",
   "File not supported": "File not supported",
-  "File too big": "File too big",
-  "light": "Blue (light)",
-  "dark": "Blue (dark)",
-  "classic": "B&W",
-  "pink": "Pink (light)"
+  "File too big": "File too big"
 }

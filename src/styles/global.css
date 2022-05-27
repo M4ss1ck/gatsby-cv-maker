@@ -1,9 +1,4 @@
 @tailwind base;
-@layer base {
-  body.dark {
-    background: black;
-  }
-}
 @tailwind components;
 @tailwind utilities;
 
