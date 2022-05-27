@@ -61,7 +61,7 @@ const Themes: React.FC = () => {
   }
 
   return (
-    <div className="relative flex flex-row items-center justify-center ml-4 mr-auto bg-opacity-100">
+    <div className="relative flex flex-row items-center justify-center mx-auto bg-opacity-100">
       <Listbox value={theme} onChange={handleChange}>
         <div className="relative">
           <Listbox.Label hidden>Select a theme</Listbox.Label>
