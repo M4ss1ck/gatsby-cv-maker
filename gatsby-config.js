@@ -14,7 +14,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-pnpm`,
     `gatsby-plugin-postcss`,
-    `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
