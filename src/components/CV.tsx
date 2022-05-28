@@ -42,7 +42,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
           className="container grid max-w-screen-lg grid-cols-1 mx-auto sm:grid-cols-3 font-montserrat"
           ref={articleRef}
         >
-          <section className="text-center text-white break-all bg-primary md:text-left">
+          <section className="text-center break-all text-primary-content bg-primary md:text-left">
             {cvdata.photo[0] && (
               <img src={cvdata.photo[0].dataURL} alt="photo" className="p-2" />
             )}
@@ -122,21 +122,25 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
               </h1>
             )}
             {cvdata.skills?.length > 0 && (
-              <ul className="flex flex-col items-center justify-center p-4 mt-2">
+              <ul className="flex flex-col items-center justify-center px-4">
                 {cvdata.skills.map((skill, index: number) => (
-                  <li key={index}>{skill}</li>
+                  <li key={index} className="first:mt-2">
+                    {skill}
+                  </li>
                 ))}
               </ul>
             )}
             {cvdata.languages?.length > 0 && (
-              <h1 className="flex justify-center px-2 text-lg font-bold bg-primary">
+              <h1 className="flex justify-center px-2 mt-4 text-lg font-bold bg-primary">
                 <Trans>Languages</Trans>
               </h1>
             )}
             {cvdata.languages?.length > 0 && (
-              <ul className="flex flex-col items-center justify-center p-4">
+              <ul className="flex flex-col items-center justify-center px-4">
                 {cvdata.languages.map((lang, index: number) => (
-                  <li key={index}>{lang}</li>
+                  <li key={index} className="first:mt-2 last:mb-2">
+                    {lang}
+                  </li>
                 ))}
               </ul>
             )}
@@ -307,10 +311,7 @@ const CV: React.FC<CVData> = ({ cvdata }) => {
           //scale={0.8}
         >
           {({ toPdf }: any) => (
-            <button
-              onClick={toPdf}
-              className="p-4 font-bold border-2 rounded-lg text-primary border-primary hover:text-white hover:bg-primary"
-            >
+            <button onClick={toPdf} className="p-4 btn btn-primary">
               <Trans>Export Pdf</Trans>
             </button>
           )}
