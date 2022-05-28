@@ -5,8 +5,8 @@ const Language = () => {
   const { languages, language, originalPath } = useI18next()
   return (
     <div className="flex flex-row items-center justify-center m-auto">
-      <svg
-        className="w-6 h-6"
+      {/* <svg
+        className="w-6 h-6 text-primary"
         width="36px"
         height="36px"
         viewBox="0 0 36 36"
@@ -26,15 +26,15 @@ const Language = () => {
 		c-0.2,1.8-1,2.9-1.9,3.6c-0.6-0.5-1.2-1.2-1.6-2.1h-2.1c0.4,1.3,1,2.3,1.8,3.1C21.1,15,20.2,15,20,15V17z"
         ></path>
         <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
-      </svg>
+      </svg> */}
       <ul className="languages">
         {languages.map(lng => (
           <li
             key={lng}
             className={
               language === lng
-                ? "text-center text-sm lg:text-lg py-4 font-montserrat cursor-pointer outline outline-primario outline-1 text-primario inline-flex items-center px-2 pt-2 pb-2 font-medium leading-5 transition duration-250 ease-in-out mx-2 rounded-lg"
-                : "text-center text-sm lg:text-lg py-4 font-montserrat cursor-pointer border-transparent text-primario text-opacity-60 hover:text-primario hover:outline-secundario focus:text-secundario focus:outline-grey-600 inline-flex items-center px-1 pt-2 pb-2 border-b-4 font-medium leading-5 focus:outline-none transition duration-250 ease-in-out mx-2 rounded-lg"
+                ? "py-4 font-montserrat px-2 pt-2 pb-2 mx-1 btn btn-primary btn-square"
+                : "py-4 font-montserrat px-2 pt-2 pb-2 mx-1 btn btn-primary btn-outline btn-square"
             }
           >
             <Link to={originalPath} language={lng}>
