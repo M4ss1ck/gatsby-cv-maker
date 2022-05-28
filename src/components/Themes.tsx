@@ -63,7 +63,7 @@ const Themes: React.FC = () => {
   return (
     <div className="relative flex flex-row items-center justify-center mx-auto bg-opacity-100">
       <Listbox value={theme} onChange={handleChange}>
-        <div className="relative">
+        <div className="relative text-primary">
           <Listbox.Label hidden>Select a theme</Listbox.Label>
           <Listbox.Button as={React.Fragment}>
             <svg
@@ -120,7 +120,10 @@ const Themes: React.FC = () => {
                           />
                         </svg>
                       )}
-                      {t(currentTheme)}
+                      {t(currentTheme)}{" "}
+                      <span className="p-1 m-1 ml-2 rounded-full bg-primary"></span>
+                      <span className="p-1 m-1 rounded-full bg-secondary"></span>
+                      <span className="p-1 m-1 rounded-full bg-accent"></span>
                     </li>
                   )}
                 </Listbox.Option>
