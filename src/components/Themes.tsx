@@ -90,7 +90,7 @@ const Themes: React.FC = () => {
             leaveTo="transform scale-95 opacity-0"
           >
             <Listbox.Options
-              className="absolute top-0 left-0 block overflow-y-auto h-72"
+              className="absolute top-0 left-0 block overflow-y-auto h-72 scrollbar-thin scrollbar-thumb-current scrollbar-track-transparent"
               tabIndex={0}
             >
               {daisyUIThemes.map(currentTheme => (
