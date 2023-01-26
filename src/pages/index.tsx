@@ -279,18 +279,14 @@ const Home = () => {
             <Trans>About</Trans>
           </a>
         </div>
-        <h1 className="my-auto text-lg font-bold lg:text-4xl">
-          <Trans>CV Maker</Trans>
-        </h1>
-        <p className="font-montserrat">
-          <Trans>Crearemos un CV a partir de un formulario</Trans>
-        </p>
-        <small className="mb-8">
-          <Trans>
-            Actualmente no estamos validándolo, así que depende de ti introducir
-            los valores correctos
-          </Trans>
-        </small>
+        <div className="flex items-center justify-center mb-2">
+          <h1 className="my-auto text-lg font-bold uppercase lg:text-4xl">
+            <Trans>CV Maker</Trans>
+          </h1>
+          <p className="px-4 font-montserrat">
+            <Trans>Crearemos un CV a partir de un formulario</Trans>
+          </p>
+        </div>
         <div className="container flex flex-col items-center justify-center w-full mx-auto md:flex-row md:items-start">
           <form className="flex flex-col flex-nowrap items-center justify-start w-full max-h-[90vh] overflow-y-auto md:max-w-xs scroll-smooth md:mr-8 scrollbar-thin scrollbar-thumb-current scrollbar-track-transparent">
             <Card>
