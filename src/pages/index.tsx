@@ -354,14 +354,14 @@ const Home = () => {
                 id="full-name"
                 type="text"
                 placeholder={t("Nombre completo")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e => setCVdata({ ...cvdata, name: e.target.value })}
               />
               <input
                 id="position"
                 type="text"
                 placeholder={t("What are you?")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCVdata({ ...cvdata, position: e.target.value })
                 }
@@ -383,7 +383,7 @@ const Home = () => {
                 id="address"
                 type="text"
                 placeholder={t("Address")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCVdata({ ...cvdata, address: e.target.value })
                 }
@@ -392,14 +392,14 @@ const Home = () => {
                 id="email"
                 type="email"
                 placeholder={t("E-mail")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e => setCVdata({ ...cvdata, email: e.target.value })}
               />
               <input
                 id="website"
                 type="url"
                 placeholder={t("Website")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCVdata({ ...cvdata, website: e.target.value })
                 }
@@ -408,7 +408,7 @@ const Home = () => {
                 id="linkedin"
                 type="url"
                 placeholder={"LinkedIn"}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCVdata({ ...cvdata, linkedin: e.target.value })
                 }
@@ -417,7 +417,7 @@ const Home = () => {
                 id="twitter"
                 type="url"
                 placeholder={t("Twitter")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCVdata({ ...cvdata, twitter: e.target.value })
                 }
@@ -426,7 +426,7 @@ const Home = () => {
                 id="github"
                 type="url"
                 placeholder={t("Github")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e => setCVdata({ ...cvdata, github: e.target.value })}
               />
             </Card>
@@ -438,7 +438,7 @@ const Home = () => {
                 id="skills"
                 type="text"
                 placeholder={t("Skills")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e => setCurrentSkill(e.target.value)}
                 value={currentSkill}
               />
@@ -467,7 +467,7 @@ const Home = () => {
                 id="languages"
                 type="text"
                 placeholder={t("Languajes")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e => setCurrentLang(e.target.value)}
                 value={currentLang}
               />
@@ -496,7 +496,7 @@ const Home = () => {
                 id="education_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCurrentEducation({
                     ...currentEducation,
@@ -554,7 +554,7 @@ const Home = () => {
                 id="work_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCurrentWork({
                     ...currentWork,
@@ -625,7 +625,7 @@ const Home = () => {
                 id="projects_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -638,7 +638,7 @@ const Home = () => {
                 id="projects_title"
                 type="text"
                 placeholder={t("Position")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -651,7 +651,7 @@ const Home = () => {
                 id="projects_url"
                 type="text"
                 placeholder={t("Place")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCurrentProject({
                     ...currentProject,
@@ -698,7 +698,7 @@ const Home = () => {
                 id="award_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCurrentAward({
                     ...currentAward,
@@ -756,7 +756,7 @@ const Home = () => {
                 id="publication_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCurrentPublication({
                     ...currentPublication,
@@ -814,7 +814,7 @@ const Home = () => {
                 id="interest_date"
                 type="text"
                 placeholder={t("Date")}
-                className="px-1 my-4 bg-base-100"
+                className="w-full px-1 my-4 bg-base-100"
                 onChange={e =>
                   setCurrentInterest({
                     ...currentInterest,
