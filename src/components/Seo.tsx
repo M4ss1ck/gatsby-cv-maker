@@ -9,23 +9,6 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-interface SeoProps {
-  description?: string,
-  lang?: string,
-  meta?: any,
-  title: string,
-}
-interface SeoQuery {  
-    site: {
-      siteMetadata: {
-        title: string
-        description: string
-        social: {
-          twitter: string
-        }
-      }
-    }  
-}
 
 const Seo: React.FC<SeoProps> = ({ description, lang, meta, title }) => {
   const { site }: SeoQuery = useStaticQuery(
