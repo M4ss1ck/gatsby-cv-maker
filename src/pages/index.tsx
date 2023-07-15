@@ -9,30 +9,22 @@ import Seo from "../components/Seo"
 import Language from "../components/Language"
 import Themes from "../components/Themes"
 
+import Photo from "../components/Photo"
+import NameSection from "../components/NameSection"
+import ContactSection from "../components/ContactSection"
+import SkillsSection from "../components/SkillsSection"
+import LanguagesSection from "../components/LanguagesSection"
+import EducationSection from "../components/EducationSection"
+import WorkHistorySection from "../components/WorkHistorySection"
+import ProjectsSection from "../components/ProjectsSection"
+import AwardsSection from "../components/AwardsSection"
+import PublicationsSection from "../components/PublicationsSection"
+import InterestsSection from "../components/InterestsSection"
+
 const Home = () => {
   const { t } = useTranslation()
   const { language } = useI18next()
 
-  interface CVData {
-    photo: ImageListType
-    name: string
-    position: string
-    address: string
-    email: string
-    website: string
-    twitter: string
-    linkedin: string
-    github: string
-    skills: string[]
-    languages: string[]
-    education: any[]
-    work: any[]
-    projects: any[]
-    awards: any[]
-    publications: any[]
-    interests: any[]
-    excerpt: string
-  }
   const emptycvdata: CVData = {
     photo: [],
     name: "",
@@ -66,9 +58,6 @@ const Home = () => {
   }, [cvdata])
 
   const onChange = (imageList: ImageListType) => {
-    // data for submit
-    console.log(imageList[0])
-    console.log(cvdata)
     setCVdata({ ...cvdata, photo: imageList })
   }
 
@@ -102,7 +91,7 @@ const Home = () => {
     setCurrentSkill("")
   }
 
-  const [currentEducation, setCurrentEducation] = React.useState({
+  const [currentEducation, setCurrentEducation] = React.useState<Education>({
     date: "",
     title: "",
     small: "",
@@ -128,7 +117,7 @@ const Home = () => {
     })
   }
 
-  const [currentWork, setCurrentWork] = React.useState({
+  const [currentWork, setCurrentWork] = React.useState<Work>({
     date: "",
     position: "",
     small: "",
@@ -264,22 +253,36 @@ const Home = () => {
     })
   }
 
+  const updateCV = (name: keyof CVData) => (e: React.ChangeEvent<HTMLInputElement>) => setCVdata({ ...cvdata, [name]: e.target.value })
+
+  const updateEducation = (name: keyof Education) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setCurrentEducation({ ...currentEducation, [name]: e.target.value })
+
+  const updateWorkHistory = (name: keyof Work) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setCurrentWork({ ...currentWork, [name]: e.target.value })
+
+  const updateProject = (name: keyof Project) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setCurrentProject({ ...currentProject, [name]: e.target.value })
+
+  const updateAward = (name: keyof Education) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setCurrentAward({ ...currentAward, [name]: e.target.value })
+
+  const updatePublication = (name: keyof Education) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setCurrentPublication({ ...currentPublication, [name]: e.target.value })
+
+  const updateInterest = (name: keyof Education) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setCurrentInterest({ ...currentInterest, [name]: e.target.value })
+
   return (
     <>
       <Seo lang={language} title={cvdata.name ? cvdata.name : t("My CV")} />
-      <main className="container flex flex-col items-center justify-center w-full mx-auto">
-        <div className="flex flex-row items-center justify-center w-full">
+      <main className="container flex flex-col justify-center items-center mx-auto w-full">
+        <div className="flex flex-row justify-center items-center w-full">
           <Themes />
           <Language />
           <a
             href="/about"
-            //className="p-2 px-4 m-auto my-4 font-bold border-2 text-primary border-primary rounded-xl hover:text-secondary hover:bg-primary"
+            //className="p-2 px-4 m-auto my-4 font-bold rounded-xl border-2 text-primary border-primary hover:text-secondary hover:bg-primary"
             className="mx-auto my-4 btn btn-primary"
           >
             <Trans>About</Trans>
           </a>
         </div>
-        <div className="flex items-center justify-center mb-2">
+        <div className="flex justify-center items-center mb-2">
           <h1 className="my-auto text-lg font-bold uppercase lg:text-4xl">
             <Trans>CV Maker</Trans>
           </h1>
@@ -287,586 +290,80 @@ const Home = () => {
             <Trans>Crearemos un CV a partir de un formulario</Trans>
           </p>
         </div>
-        <div className="container flex flex-col items-center justify-center w-full mx-auto md:flex-row md:items-start">
+        <div className="container flex flex-col justify-center items-center mx-auto w-full md:flex-row md:items-start">
           <form className="flex flex-col flex-nowrap items-center justify-start w-full max-h-[90vh] overflow-y-auto md:max-w-xs scroll-smooth md:mr-8 scrollbar-thin scrollbar-thumb-current scrollbar-track-transparent">
-            <Card>
-              <label htmlFor="profileImage">
-                <Trans>Photo</Trans>
-              </label>
-              <ImageUploading value={cvdata.photo} onChange={onChange}>
-                {({
-                  imageList,
-                  onImageUpload,
-                  onImageRemoveAll,
-                  isDragging,
-                  dragProps,
-                  errors,
-                }) => (
-                  // write your building UI
-                  <div className="flex flex-col items-center w-full px-1 my-4">
-                    <button
-                      style={isDragging ? { color: "red" } : undefined}
-                      onClick={onImageUpload}
-                      className="p-4 border border-dashed border-primary rounded-xl bg-base-100"
-                      {...dragProps}
-                    >
-                      <Trans>Click or Drop here</Trans>
-                    </button>
+            <Photo
+              value={cvdata.photo}
+              onChange={onChange}
+            />
 
-                    <button
-                      onClick={onImageRemoveAll}
-                      className="p-2 px-2 my-2 btn btn-primary"
-                    >
-                      <Trans>Remove</Trans>
-                    </button>
-                    {imageList.map((image, index) => (
-                      <div key={index} className="image-item">
-                        <img src={image.dataURL} alt="photo" width="100" />
-                      </div>
-                    ))}
-                    {errors && (
-                      <div>
-                        {errors.acceptType && (
-                          <span className="text-error">
-                            <Trans>File not supported</Trans>
-                          </span>
-                        )}
-                        {errors.maxFileSize && (
-                          <span className="text-error">
-                            <Trans>File too big</Trans>
-                          </span>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </ImageUploading>
-            </Card>
-            <Card>
-              <label htmlFor="full-name">
-                <Trans>Nombre, cargo y resumen</Trans>
-              </label>
-              <input
-                id="full-name"
-                type="text"
-                placeholder={t("Nombre completo")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e => setCVdata({ ...cvdata, name: e.target.value })}
-              />
-              <input
-                id="position"
-                type="text"
-                placeholder={t("What are you?")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCVdata({ ...cvdata, position: e.target.value })
-                }
-              />
-              <textarea
-                id="excerpt"
-                placeholder={t("Summary")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCVdata({ ...cvdata, excerpt: e.target.value })
-                }
-              />
-            </Card>
-            <Card>
-              <label htmlFor="address">
-                <Trans>Contact info</Trans>
-              </label>
-              <input
-                id="address"
-                type="text"
-                placeholder={t("Address")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCVdata({ ...cvdata, address: e.target.value })
-                }
-              />
-              <input
-                id="email"
-                type="email"
-                placeholder={t("E-mail")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e => setCVdata({ ...cvdata, email: e.target.value })}
-              />
-              <input
-                id="website"
-                type="url"
-                placeholder={t("Website")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCVdata({ ...cvdata, website: e.target.value })
-                }
-              />
-              <input
-                id="linkedin"
-                type="url"
-                placeholder={"LinkedIn"}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCVdata({ ...cvdata, linkedin: e.target.value })
-                }
-              />
-              <input
-                id="twitter"
-                type="url"
-                placeholder={t("Twitter")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCVdata({ ...cvdata, twitter: e.target.value })
-                }
-              />
-              <input
-                id="github"
-                type="url"
-                placeholder={t("Github")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e => setCVdata({ ...cvdata, github: e.target.value })}
-              />
-            </Card>
-            <Card>
-              <label htmlFor="skills">
-                <Trans>Skills</Trans>
-              </label>
-              <input
-                id="skills"
-                type="text"
-                placeholder={t("Skills")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e => setCurrentSkill(e.target.value)}
-                value={currentSkill}
-              />
-              <div className="flex flex-row items-center justify-between w-full px-2">
-                <button
-                  type="button"
-                  onClick={addSkill}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Add</Trans>
-                </button>
-                <button
-                  type="button"
-                  onClick={remSkill}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Remove</Trans>
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <label htmlFor="languages">
-                <Trans>Languajes</Trans>
-              </label>
-              <input
-                id="languages"
-                type="text"
-                placeholder={t("Languajes")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e => setCurrentLang(e.target.value)}
-                value={currentLang}
-              />
-              <div className="flex flex-row items-center justify-between w-full px-2">
-                <button
-                  type="button"
-                  onClick={addlanguage}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Add</Trans>
-                </button>
-                <button
-                  type="button"
-                  onClick={remlanguage}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Remove</Trans>
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <label htmlFor="education">
-                <Trans>Education</Trans>
-              </label>
-              <input
-                id="education_date"
-                type="text"
-                placeholder={t("Date")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentEducation({
-                    ...currentEducation,
-                    date: e.target.value,
-                  })
-                }
-                value={currentEducation.date}
-              />
-              <textarea
-                id="education_title"
-                placeholder={t("Title")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentEducation({
-                    ...currentEducation,
-                    title: e.target.value,
-                  })
-                }
-                value={currentEducation.title}
-              />
-              <textarea
-                id="education_small"
-                placeholder={t("Place")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentEducation({
-                    ...currentEducation,
-                    small: e.target.value,
-                  })
-                }
-                value={currentEducation.small}
-              />
-              <div className="flex flex-row items-center justify-between w-full px-2">
-                <button
-                  type="button"
-                  onClick={addEducation}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Add</Trans>
-                </button>
-                <button
-                  type="button"
-                  onClick={remEducation}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Remove</Trans>
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <label htmlFor="work">
-                <Trans>Work History</Trans>
-              </label>
-              <input
-                id="work_date"
-                type="text"
-                placeholder={t("Date")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentWork({
-                    ...currentWork,
-                    date: e.target.value,
-                  })
-                }
-                value={currentWork.date}
-              />
-              <textarea
-                id="work_title"
-                placeholder={t("Position")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentWork({
-                    ...currentWork,
-                    position: e.target.value,
-                  })
-                }
-                value={currentWork.position}
-              />
-              <textarea
-                id="work_small"
-                placeholder={t("Place")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentWork({
-                    ...currentWork,
-                    small: e.target.value,
-                  })
-                }
-                value={currentWork.small}
-              />
-              <textarea
-                id="work_info"
-                placeholder={t("More info")}
-                className="w-full px-1 my-4 bg-base-100"
-                rows={5}
-                onChange={e =>
-                  setCurrentWork({
-                    ...currentWork,
-                    info: e.target.value,
-                  })
-                }
-                value={currentWork.info}
-              />
-              <div className="flex flex-row items-center justify-between w-full px-2">
-                <button
-                  type="button"
-                  onClick={addWork}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Add</Trans>
-                </button>
-                <button
-                  type="button"
-                  onClick={remWork}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Remove</Trans>
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <label htmlFor="projects">
-                <Trans>Projects</Trans>
-              </label>
-              <input
-                id="projects_date"
-                type="text"
-                placeholder={t("Date")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentProject({
-                    ...currentProject,
-                    date: e.target.value,
-                  })
-                }
-                value={currentProject.date}
-              />
-              <input
-                id="projects_title"
-                type="text"
-                placeholder={t("Position")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentProject({
-                    ...currentProject,
-                    title: e.target.value,
-                  })
-                }
-                value={currentProject.title}
-              />
-              <input
-                id="projects_url"
-                type="text"
-                placeholder={t("Place")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentProject({
-                    ...currentProject,
-                    url: e.target.value,
-                  })
-                }
-                value={currentProject.url}
-              />
-              <textarea
-                id="projects_info"
-                placeholder={t("More info")}
-                className="w-full px-1 my-4 bg-base-100"
-                rows={5}
-                onChange={e =>
-                  setCurrentProject({
-                    ...currentProject,
-                    info: e.target.value,
-                  })
-                }
-                value={currentProject.info}
-              />
-              <div className="flex flex-row items-center justify-between w-full px-2">
-                <button
-                  type="button"
-                  onClick={addProject}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Add</Trans>
-                </button>
-                <button
-                  type="button"
-                  onClick={remProject}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Remove</Trans>
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <label htmlFor="awards">
-                <Trans>Awards</Trans>
-              </label>
-              <input
-                id="award_date"
-                type="text"
-                placeholder={t("Date")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentAward({
-                    ...currentAward,
-                    date: e.target.value,
-                  })
-                }
-                value={currentAward.date}
-              />
-              <textarea
-                id="award_title"
-                placeholder={t("Title")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentAward({
-                    ...currentAward,
-                    title: e.target.value,
-                  })
-                }
-                value={currentAward.title}
-              />
-              <textarea
-                id="award_small"
-                placeholder={t("Place")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentAward({
-                    ...currentAward,
-                    small: e.target.value,
-                  })
-                }
-                value={currentAward.small}
-              />
-              <div className="flex flex-row items-center justify-between w-full px-2">
-                <button
-                  type="button"
-                  onClick={addAward}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Add</Trans>
-                </button>
-                <button
-                  type="button"
-                  onClick={remAward}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Remove</Trans>
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <label htmlFor="publications">
-                <Trans>Publications</Trans>
-              </label>
-              <input
-                id="publication_date"
-                type="text"
-                placeholder={t("Date")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentPublication({
-                    ...currentPublication,
-                    date: e.target.value,
-                  })
-                }
-                value={currentPublication.date}
-              />
-              <textarea
-                id="publication_title"
-                placeholder={t("Title")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentPublication({
-                    ...currentPublication,
-                    title: e.target.value,
-                  })
-                }
-                value={currentPublication.title}
-              />
-              <textarea
-                id="publication_small"
-                placeholder={t("Place")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentPublication({
-                    ...currentPublication,
-                    small: e.target.value,
-                  })
-                }
-                value={currentPublication.small}
-              />
-              <div className="flex flex-row items-center justify-between w-full px-2">
-                <button
-                  type="button"
-                  onClick={addPublication}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Add</Trans>
-                </button>
-                <button
-                  type="button"
-                  onClick={remPublication}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Remove</Trans>
-                </button>
-              </div>
-            </Card>
-            <Card>
-              <label htmlFor="interests">
-                <Trans>Interests</Trans>
-              </label>
-              <input
-                id="interest_date"
-                type="text"
-                placeholder={t("Date")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentInterest({
-                    ...currentInterest,
-                    date: e.target.value,
-                  })
-                }
-                value={currentInterest.date}
-              />
-              <textarea
-                id="interest_title"
-                placeholder={t("Title")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentInterest({
-                    ...currentInterest,
-                    title: e.target.value,
-                  })
-                }
-                value={currentInterest.title}
-              />
-              <textarea
-                id="interest_small"
-                placeholder={t("Place")}
-                className="w-full px-1 my-4 bg-base-100"
-                onChange={e =>
-                  setCurrentInterest({
-                    ...currentInterest,
-                    small: e.target.value,
-                  })
-                }
-                value={currentInterest.small}
-              />
-              <div className="flex flex-row items-center justify-between w-full px-2">
-                <button
-                  type="button"
-                  onClick={addInterest}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Add</Trans>
-                </button>
-                <button
-                  type="button"
-                  onClick={remInterest}
-                  className="p-2 px-2 mb-2 btn btn-primary"
-                >
-                  <Trans>Remove</Trans>
-                </button>
-              </div>
-            </Card>
+            <NameSection
+              onNameChange={updateCV('name')}
+              onPositionChange={updateCV('position')}
+              onExcerptChange={updateCV('excerpt')}
+              data={cvdata}
+            />
 
-            {/* <button
-              className="px-4 border border-primary rounded-xl"
-              type="submit"
-            >
-              Agregar
-            </button> */}
+            <ContactSection
+              updateCV={updateCV}
+              data={cvdata}
+            />
+
+            <SkillsSection
+              currentSkill={currentSkill}
+              setCurrentSkill={setCurrentSkill}
+              addSkill={addSkill}
+              remSkill={remSkill}
+            />
+
+            <LanguagesSection
+              currentLang={currentLang}
+              setCurrentLang={setCurrentLang}
+              remlanguage={remlanguage}
+              addlanguage={addlanguage}
+            />
+
+            <EducationSection
+              updateEducation={updateEducation}
+              currentEducation={currentEducation}
+              addEducation={addEducation}
+              remEducation={remEducation}
+            />
+
+            <WorkHistorySection
+              currentWork={currentWork}
+              updateWorkHistory={updateWorkHistory}
+              addWork={addWork}
+              remWork={remWork}
+            />
+
+            <ProjectsSection
+              updateProject={updateProject}
+              currentProject={currentProject}
+              addProject={addProject}
+              remProject={remProject}
+            />
+
+            <AwardsSection
+              currentAward={currentAward}
+              updateAward={updateAward}
+              addAward={addAward}
+              remAward={remAward}
+            />
+
+            <PublicationsSection
+              currentPublication={currentPublication}
+              updatePublication={updatePublication}
+              addPublication={addPublication}
+              remPublication={remPublication}
+            />
+
+            <InterestsSection
+              currentInterest={currentInterest}
+              updateInterest={updateInterest}
+              addInterest={addInterest}
+              remInterest={remInterest}
+            />
           </form>
           <div className="sticky top-0">
             <CuVi cvdata={cvdata} />
