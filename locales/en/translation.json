@@ -41,5 +41,6 @@
   "Photo": "Photo",
   "Click or Drop here": "Click or Drop here",
   "File not supported": "File not supported",
-  "File too big": "File too big"
+  "File too big": "File too big",
+  "Export JSON": "Export JSON"
 }

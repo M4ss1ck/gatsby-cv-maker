@@ -26,6 +26,8 @@ const CV: React.FC<CV> = ({ cvdata }) => {
     }
   }
 
+  const jsonLink = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(cvdata, null, 2))}`
+
   return (
     <>
       <div>
@@ -286,10 +288,13 @@ const CV: React.FC<CV> = ({ cvdata }) => {
           </section>
         </article>
       </div>
-      <div className="container flex flex-row justify-center items-center mx-auto mt-4 mb-12 max-w-screen-lg">
+      <div className="container flex flex-row gap-2 justify-center items-center mx-auto mt-4 mb-12 max-w-screen-lg">
         <button onClick={createPDF} type="button" className="p-4 btn btn-primary">
           <Trans>Export Pdf</Trans>
         </button>
+        <a href={jsonLink} download="cv.json" className="p-4 btn btn-primary">
+          <Trans>Export JSON</Trans>
+        </a>
       </div>
     </>
   )
