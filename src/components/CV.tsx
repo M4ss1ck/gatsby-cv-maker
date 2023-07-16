@@ -1,26 +1,43 @@
 import * as React from "react"
 import { Trans } from "gatsby-plugin-react-i18next"
-import Pdf from "react-to-pdf"
-import { useElementSize, useWindowSize } from "usehooks-ts"
+import html2canvas from "html2canvas"
+import { jsPDF } from "jspdf"
 
 interface CV {
   cvdata: CVData
 }
 
 const CV: React.FC<CV> = ({ cvdata }) => {
-  const ref = React.createRef() as React.RefObject<HTMLDivElement>
+  const [currentTheme, setCurrentTheme] = React.useState("")
+  const createPDF = async () => {
+    try {
+      const pdf = new jsPDF("portrait", "pt", "letter");
+      const data = await html2canvas(document.querySelector("#pdf")!);
+      const img = data.toDataURL("image/png");
+      const imgProperties = pdf.getImageProperties(img);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+      pdf.addImage(img, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("cv.pdf");
+    } catch (error) {
+      console.log('Error exporting the PDF file: ', error)
+    }
+  }
 
-  // using https://usehooks-ts.com/react-hook/use-element-size
-  const [articleRef, { height }] = useElementSize()
-  // https://usehooks-ts.com/react-hook/use-window-size
-  const { width } = useWindowSize()
+  React.useEffect(() => {
+    const theme = localStorage.getItem("theme")
+    if (theme) {
+      setCurrentTheme(theme)
+    }
+  }, [])
 
   return (
     <>
-      <div ref={ref}>
+      <div>
         <article
           className="container grid grid-cols-1 mx-auto max-w-screen-lg sm:grid-cols-3 font-montserrat"
-          ref={articleRef}
+          id="pdf"
+          data-theme={currentTheme}
         >
           <section className="text-center break-all text-primary-content bg-primary md:text-left">
             {cvdata.photo[0] && (
@@ -274,28 +291,10 @@ const CV: React.FC<CV> = ({ cvdata }) => {
           </section>
         </article>
       </div>
-      <div className="flex justify-end items-center">
-        <p className="mr-4">
-          <Trans>CV dimensions:</Trans> {width} x {height} px
-        </p>
-      </div>
       <div className="container flex flex-row justify-center items-center mx-auto mt-4 mb-12 max-w-screen-lg">
-        <Pdf
-          targetRef={ref}
-          filename="my-cv.pdf"
-          options={{
-            orientation: width > height ? "landscape" : "portrait",
-            unit: "in",
-            format: [width / 96, height / 96],
-          }}
-        //scale={0.8}
-        >
-          {({ toPdf }: any) => (
-            <button onClick={toPdf} className="p-4 btn btn-primary">
-              <Trans>Export Pdf</Trans>
-            </button>
-          )}
-        </Pdf>
+        <button onClick={createPDF} type="button" className="p-4 btn btn-primary">
+          <Trans>Export Pdf</Trans>
+        </button>
       </div>
     </>
   )
