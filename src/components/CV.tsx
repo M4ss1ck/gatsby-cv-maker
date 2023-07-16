@@ -3,12 +3,14 @@ import { Trans } from "gatsby-plugin-react-i18next"
 import html2canvas from "html2canvas"
 import { jsPDF } from "jspdf"
 
+import { useStore } from "../store/cv"
+
 interface CV {
   cvdata: CVData
 }
 
 const CV: React.FC<CV> = ({ cvdata }) => {
-  const [currentTheme, setCurrentTheme] = React.useState("")
+  const currentTheme = useStore(state => state.theme)
   const createPDF = async () => {
     try {
       const pdf = new jsPDF("portrait", "pt", "letter");
@@ -23,13 +25,6 @@ const CV: React.FC<CV> = ({ cvdata }) => {
       console.log('Error exporting the PDF file: ', error)
     }
   }
-
-  React.useEffect(() => {
-    const theme = localStorage.getItem("theme")
-    if (theme) {
-      setCurrentTheme(theme)
-    }
-  }, [])
 
   return (
     <>

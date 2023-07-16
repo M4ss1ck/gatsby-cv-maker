@@ -65,12 +65,12 @@ dependencies:
   react-images-uploading:
     specifier: ^3.1.6
     version: 3.1.6(react-dom@17.0.2)(react@17.0.2)
-  react-to-pdf:
-    specifier: ^0.0.14
-    version: 0.0.14(react-dom@17.0.2)(react@17.0.2)
   usehooks-ts:
     specifier: ^2.4.2
     version: 2.4.2(react@17.0.2)
+  zustand:
+    specifier: ^4.3.9
+    version: 4.3.9(react@17.0.2)
 
 devDependencies:
   '@babel/cli':
@@ -3047,11 +3047,6 @@ packages:
     resolution: {integrity: sha1-mBjHngWbE1X5fgQooBfIOOkLqBI=}
     engines: {node: '>= 0.6.0'}
 
-  /base64-arraybuffer@0.1.5:
-    resolution: {integrity: sha1-c5JncZI7Whl0etZmqlzUv5xunOg=}
-    engines: {node: '>= 0.6.0'}
-    dev: false
-
   /base64-arraybuffer@1.0.2:
     resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
     engines: {node: '>= 0.6.0'}
@@ -3710,12 +3705,6 @@ packages:
     dependencies:
       postcss: 8.4.7
       timsort: 0.3.0
-
-  /css-line-break@1.0.1:
-    resolution: {integrity: sha1-GfIGOjPpX7KDG4ZEbAuAwYivRQo=}
-    dependencies:
-      base64-arraybuffer: 0.1.5
-    dev: false
 
   /css-line-break@2.1.0:
     resolution: {integrity: sha512-FHcKFCZcAha3LwfVBhCQbW2nCNbkZXn7KVUJcsT5/P8YmfsVja0FMPJr0B903j/E69HUphKiV9iQArX8SDYA4w==}
@@ -6013,13 +6002,6 @@ packages:
     resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
     dependencies:
       void-elements: 3.1.0
-    dev: false
-
-  /html2canvas@1.0.0-alpha.12:
-    resolution: {integrity: sha512-+mr9jumxMQO9ZZwf7nUp3tonOIaI6tAAV0yciDMuX0tetV4wz/lFc2AxAYndxANe7/O67DKLgDLjT+ZcVUSQrw==}
-    engines: {node: '>=4.0.0'}
-    dependencies:
-      css-line-break: 1.0.1
     dev: false
 
   /html2canvas@1.4.1:
@@ -8364,18 +8346,6 @@ packages:
       react: 17.0.2
     dev: false
 
-  /react-to-pdf@0.0.14(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-u4gwkV7Byr1uU3FgR5n99tufNgMVEYE3reyjNsYK3WuRReE1IqolYXzCoj3n/Xhk8KOFYSiS3V4xEaGFGR9H5Q==}
-    peerDependencies:
-      react: ^16.5.2
-      react-dom: ^16.5.2
-    dependencies:
-      html2canvas: 1.0.0-alpha.12
-      jspdf: 2.5.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-    dev: false
-
   /react@17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
@@ -9678,6 +9648,14 @@ packages:
     dependencies:
       prepend-http: 2.0.0
 
+  /use-sync-external-store@1.2.0(react@17.0.2):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 17.0.2
+    dev: false
+
   /use@3.1.1:
     resolution: {integrity: sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==}
     engines: {node: '>=0.10.0'}
@@ -10048,3 +10026,19 @@ packages:
       is-ci: 2.0.0
       read: 1.0.7
       strip-ansi: 5.2.0
+
+  /zustand@4.3.9(react@17.0.2):
+    resolution: {integrity: sha512-Tat5r8jOMG1Vcsj8uldMyqYKC5IZvQif8zetmLHs9WoZlntTHmIoNM8TpLRY31ExncuUvUOXehd0kvahkuHjDw==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 17.0.2
+      use-sync-external-store: 1.2.0(react@17.0.2)
+    dev: false

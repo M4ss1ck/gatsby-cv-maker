@@ -131,3 +131,8 @@ interface PublicationsSectionI {
     addPublication: (event: React.MouseEvent<HTMLButtonElement>) => void
     remPublication: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
+
+interface State {
+    theme: string
+    setTheme: (theme: string) => void
+}

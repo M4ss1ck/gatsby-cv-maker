@@ -37,7 +37,8 @@
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.15.5",
     "react-images-uploading": "^3.1.6",
-    "usehooks-ts": "^2.4.2"
+    "usehooks-ts": "^2.4.2",
+    "zustand": "^4.3.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",

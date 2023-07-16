@@ -2,6 +2,8 @@ import React, { useEffect } from "react"
 import { Listbox, Transition } from "@headlessui/react"
 import { useTranslation } from "gatsby-plugin-react-i18next"
 
+import { useStore } from "../store/cv"
+
 const daisyUIThemes = [
   "light",
   "dark",
@@ -36,6 +38,7 @@ const daisyUIThemes = [
 
 const Themes: React.FC = () => {
   const { t } = useTranslation()
+  const saveTheme = useStore(state => state.setTheme)
 
   let initialTheme = ""
 
@@ -54,6 +57,7 @@ const Themes: React.FC = () => {
 
   const handleChange = (theme: string) => {
     setTheme(theme)
+    saveTheme(theme)
     document.documentElement.classList.add("theme-transition")
     document.documentElement.setAttribute("data-theme", theme)
     localStorage.setItem("theme", theme)
@@ -63,14 +67,14 @@ const Themes: React.FC = () => {
   }
 
   return (
-    <div className="relative flex flex-row items-center justify-center mx-auto bg-opacity-100">
+    <div className="flex relative flex-row justify-center items-center mx-auto bg-opacity-100">
       <Listbox value={theme} onChange={handleChange}>
         <div className="relative text-primary">
           <Listbox.Label hidden>Select a theme</Listbox.Label>
           <Listbox.Button as={React.Fragment}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 cursor-pointer focus:outline-none"
+              className="w-8 h-8 cursor-pointer focus:outline-none"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -90,7 +94,7 @@ const Themes: React.FC = () => {
             leaveTo="transform scale-95 opacity-0"
           >
             <Listbox.Options
-              className="absolute top-0 left-0 block overflow-y-auto h-72 scrollbar-thin scrollbar-thumb-current scrollbar-track-transparent rounded-lg"
+              className="block overflow-y-auto absolute top-0 left-0 h-72 rounded-lg scrollbar-thin scrollbar-thumb-current scrollbar-track-transparent"
               tabIndex={0}
             >
               {daisyUIThemes.map(currentTheme => (
@@ -103,7 +107,7 @@ const Themes: React.FC = () => {
                   {({ active, selected }) => (
                     <li
                       data-theme={currentTheme}
-                      className={`relative cursor-default flex-nowrap w-full select-none py-2 px-2 flex flex-row items-center justify-end`}
+                      className={`flex relative flex-row flex-nowrap justify-end items-center px-2 py-2 w-full cursor-default select-none`}
                     >
                       {selected && (
                         <svg
